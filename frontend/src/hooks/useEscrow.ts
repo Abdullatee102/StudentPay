@@ -13,7 +13,7 @@ const escrowAddress = CONTRACT_ADDRESSES.escrow
 
 function requireEscrowAddress(): Address {
   if (!escrowAddress) {
-    throw new Error('StudentPayEscrow is not deployed or configured')
+    throw new Error('BotStudentPay escrow contract is not deployed or configured')
   }
   return escrowAddress
 }

@@ -16,7 +16,7 @@
 .headerInner {
   display: flex;
   align-items: center;
-  gap: var(--space-6);
+  gap: var(--space-4);
   max-width: 1200px;
   margin: 0 auto;
   padding: var(--space-4) var(--space-6);
@@ -31,6 +31,8 @@
   color: var(--colour-text) !important;
   text-decoration: none !important;
   flex-shrink: 0;
+  min-width: 0;
+  white-space: nowrap;
 }
 
 .logoMark {
@@ -42,6 +44,30 @@
   align-items: center;
   gap: var(--space-4);
   flex: 1;
+  min-width: 0;
+}
+
+.menuButton {
+  display: none;
+  flex: 0 0 auto;
+  width: 2.75rem;
+  height: 2.5rem;
+  padding: 0.55rem;
+  border: 1px solid var(--colour-border);
+  border-radius: var(--radius-sm);
+  background: var(--colour-surface);
+  cursor: pointer;
+}
+
+.menuButton span {
+  display: block;
+  height: 2px;
+  margin: 4px 0;
+  background: var(--colour-text);
+}
+
+.wallet {
+  flex: 0 0 auto;
 }
 
 .navLink {
@@ -78,5 +104,58 @@
   border-top: 1px solid var(--colour-border);
   color: var(--colour-text-muted);
   font-size: 0.85rem;
+}
+
+@media (max-width: 760px) {
+  .headerInner {
+    position: relative;
+    flex-wrap: wrap;
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .logo {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: 1.05rem;
+  }
+
+  .logoMark {
+    font-size: 1.2rem;
+  }
+
+  .menuButton {
+    display: block;
+  }
+
+  .nav {
+    display: none;
+    order: 3;
+    flex: 1 0 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-1);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--colour-border);
+  }
+
+  .navOpen {
+    display: flex;
+  }
+
+  .navLink {
+    width: 100%;
+    padding: var(--space-3);
+  }
+
+  .wallet {
+    order: 4;
+    flex: 1 0 100%;
+    justify-content: flex-end;
+    padding-top: var(--space-2);
+  }
+
+  .main {
+    padding: var(--space-6) var(--space-4);
+  }
 }
 

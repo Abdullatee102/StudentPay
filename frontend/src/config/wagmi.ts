@@ -12,7 +12,7 @@ export const REOWN_PROJECT_ID: string =
 
 if (!REOWN_PROJECT_ID) {
   console.warn(
-    '[StudentPay] VITE_REOWN_PROJECT_ID is not set. ' +
+    '[BotStudentPay] VITE_REOWN_PROJECT_ID is not set. ' +
       'Wallet connection UI may not load correctly. ' +
       'Create a project at https://cloud.reown.com and add it to .env.local'
   )

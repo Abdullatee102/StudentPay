@@ -16,7 +16,7 @@ export default function Dashboard() {
       {/* Hero */}
       <section className={styles.hero}>
         <h1 className={styles.heroTitle}>
-          Student<span className={styles.accent}>Pay</span> Escrow
+          Bot<span className={styles.accent}>StudentPay</span> Escrow
         </h1>
         <p className={styles.heroSub}>
           Peer-to-peer crypto escrow for student services — trustless, transparent, on-chain.

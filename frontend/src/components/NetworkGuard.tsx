@@ -22,7 +22,7 @@ export default function NetworkGuard({ children }: Props) {
           <div className={styles.icon}>⚠️</div>
           <h2 className={styles.title}>Wrong Network</h2>
           <p className={styles.desc}>
-            StudentPay runs on <strong>Bohr Testnet</strong> (Chain ID: 968).
+            BotStudentPay runs on <strong>Bohr Testnet</strong> (Chain ID: 968).
             <br />
             Please switch your wallet to continue.
           </p>

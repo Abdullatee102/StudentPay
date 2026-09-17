@@ -1,4 +1,4 @@
-# StudentPay Escrow
+# BotStudentPay Escrow
 
 > Peer-to-peer crypto escrow for students — trustless, transparent, on-chain.
 
@@ -18,7 +18,7 @@ Traditional payment platforms require personal banking, charge fees, and central
 
 A smart contract is a neutral, uncensorable third party. It holds funds in escrow and only releases them when the agreed conditions are met — provably and automatically, without requiring either party to trust the other or a platform operator.
 
-StudentPay uses **no backend database**, **no centralised authentication**, and **no server that could go down or be compromised**. The smart contract _is_ the application logic.
+BotStudentPay uses **no backend database**, **no centralised authentication**, and **no server that could go down or be compromised**. The smart contract _is_ the application logic.
 
 ---
 
