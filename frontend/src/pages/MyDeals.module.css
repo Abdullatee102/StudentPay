@@ -1,0 +1,100 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  background: var(--colour-surface);
+  border: 1px solid var(--colour-border);
+  border-radius: var(--radius-lg);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.table th {
+  text-align: left;
+  padding: var(--space-3) var(--space-4);
+  color: var(--colour-text-muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--colour-border);
+}
+
+.table td {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--colour-border);
+  vertical-align: middle;
+}
+
+.row:last-child td {
+  border-bottom: none;
+}
+
+.row:hover {
+  background: var(--colour-bg);
+}
+
+.dealLink {
+  font-family: var(--font-mono);
+  font-weight: 700;
+}
+
+.role {
+  font-size: 0.85rem;
+}
+
+.description {
+  max-width: 280px;
+  color: var(--colour-text-muted);
+}
+
+.amount {
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+
+.deadline {
+  color: var(--colour-text-muted);
+  font-size: 0.85rem;
+}
+
+.loading {
+  color: var(--colour-text-muted);
+  padding: var(--space-4);
+  text-align: center;
+}
+
+.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40vh;
+  text-align: center;
+  color: var(--colour-text-muted);
+}
+
+.emptyMsg {
+  color: var(--colour-text-muted);
+}
+

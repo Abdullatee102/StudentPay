@@ -1,0 +1,105 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  max-width: 800px;
+}
+
+.loading {
+  padding: var(--space-12);
+  text-align: center;
+  color: var(--colour-text-muted);
+}
+
+.breadcrumb {
+  display: flex;
+  gap: var(--space-2);
+  font-size: 0.875rem;
+  color: var(--colour-text-muted);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.infoGrid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.metaGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-4);
+}
+
+.fieldLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--colour-text-muted);
+  margin-bottom: var(--space-1);
+}
+
+.description {
+  line-height: 1.6;
+}
+
+.amount {
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--colour-accent);
+}
+
+.deadlinePassed {
+  color: var(--colour-danger);
+}
+
+.addrLink {
+  word-break: break-all;
+}
+
+/* ── Actions card ─────────────────────────────────────────────────────────── */
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.actionsTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: var(--space-2);
+}
+
+.actionBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: var(--colour-bg);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--colour-border);
+}
+
+.actionLabel {
+  font-size: 0.875rem;
+  color: var(--colour-text-muted);
+}
+
+.terminalMsg {
+  color: var(--colour-text-muted);
+  font-style: italic;
+}
+

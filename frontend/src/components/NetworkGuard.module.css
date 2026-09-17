@@ -1,0 +1,34 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+}
+
+.card {
+  background: var(--colour-surface);
+  border: 1px solid var(--colour-warning);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  text-align: center;
+  max-width: 420px;
+  width: 100%;
+}
+
+.icon {
+  font-size: 3rem;
+  margin-bottom: var(--space-4);
+}
+
+.title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: var(--space-3);
+}
+
+.desc {
+  color: var(--colour-text-muted);
+  margin-bottom: var(--space-6);
+  line-height: 1.7;
+}
+

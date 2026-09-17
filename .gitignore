@@ -1,5 +1,5 @@
 # =============================================
-# SECURITY — never commit secrets
+# SECURITY - never commit secrets
 # =============================================
 .env
 .env.local
@@ -16,10 +16,7 @@ private_key*
 # =============================================
 out/
 cache/
-broadcast/*/run-latest.json
-
-# Keep broadcast history for reference but ignore sensitive run files
-# broadcast/**/*.json — uncomment to ignore all broadcast files
+broadcast/
 
 # =============================================
 # Frontend
