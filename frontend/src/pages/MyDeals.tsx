@@ -14,7 +14,7 @@ function DealRow({ dealId, viewerAddress }: { dealId: bigint; viewerAddress: str
   if (isLoading) {
     return (
       <tr>
-        <td colSpan={5} className={styles.loading}>Loading deal #{dealId.toString()}…</td>
+        <td colSpan={7} className={styles.loading}>Loading deal #{dealId.toString()}…</td>
       </tr>
     )
   }
@@ -26,9 +26,7 @@ function DealRow({ dealId, viewerAddress }: { dealId: bigint; viewerAddress: str
   return (
     <tr className={styles.row}>
       <td>
-        <Link to={`/deals/${deal.id.toString()}`} className={styles.dealLink}>
-          #{deal.id.toString()}
-        </Link>
+        <span className={styles.dealId}>{deal.id.toString()}</span>
       </td>
       <td>
         <span className={styles.role}>{isBuyer ? '🛒 Buyer' : '🔨 Seller'}</span>
@@ -41,6 +39,11 @@ function DealRow({ dealId, viewerAddress }: { dealId: bigint; viewerAddress: str
       <td className={styles.amount}>{formatEther(deal.amount)} BOT</td>
       <td><DealStatusBadge status={deal.status as DealStatus} /></td>
       <td className={styles.deadline}>{deadline.toLocaleDateString()}</td>
+      <td className={styles.actionCell}>
+        <Link to={`/deals/${deal.id.toString()}`} className={styles.viewButton}>
+          View
+        </Link>
+      </td>
     </tr>
   )
 }
@@ -106,6 +109,7 @@ export default function MyDeals() {
               <th>Amount</th>
               <th>Status</th>
               <th>Deadline</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>

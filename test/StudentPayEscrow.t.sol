@@ -134,8 +134,41 @@ contract StudentPayEscrowTest is Test {
     // markWorkCompleted
     // ─────────────────────────────────────────────────────────────────────────
 
+    function test_submitWork_succeeds() public {
+        uint256 id = _createAndFundDeal();
+        string memory submission = "https://example.com/proof";
+
+        vm.prank(seller);
+        vm.expectEmit(true, true, false, true);
+        emit StudentPayEscrow.WorkSubmitted(id, seller, submission);
+        escrow.submitWork(id, submission);
+
+        StudentPayEscrow.Deal memory d = escrow.getDeal(id);
+        assertEq(d.workSubmission, submission);
+        assertEq(uint8(d.status), uint8(StudentPayEscrow.DealStatus.FUNDED));
+    }
+
+    function test_submitWork_revertsIfNotSeller() public {
+        uint256 id = _createAndFundDeal();
+
+        vm.prank(buyer);
+        vm.expectRevert(StudentPayEscrow.Unauthorised.selector);
+        escrow.submitWork(id, "proof");
+    }
+
+    function test_submitWork_revertsIfEmpty() public {
+        uint256 id = _createAndFundDeal();
+
+        vm.prank(seller);
+        vm.expectRevert(StudentPayEscrow.EmptySubmission.selector);
+        escrow.submitWork(id, "");
+    }
+
     function test_markWorkCompleted_succeeds() public {
         uint256 id = _createAndFundDeal();
+
+        vm.prank(seller);
+        escrow.submitWork(id, "proof");
 
         vm.prank(buyer);
         escrow.markWorkCompleted(id);
@@ -158,12 +191,23 @@ contract StudentPayEscrowTest is Test {
         escrow.markWorkCompleted(id);
     }
 
+    function test_markWorkCompleted_revertsWithoutSubmission() public {
+        uint256 id = _createAndFundDeal();
+
+        vm.prank(buyer);
+        vm.expectRevert(StudentPayEscrow.EmptySubmission.selector);
+        escrow.markWorkCompleted(id);
+    }
+
     // ─────────────────────────────────────────────────────────────────────────
     // releaseFunds
     // ─────────────────────────────────────────────────────────────────────────
 
     function test_releaseFunds_succeeds() public {
         uint256 id = _createAndFundDeal();
+
+        vm.prank(seller);
+        escrow.submitWork(id, "proof");
 
         vm.prank(buyer);
         escrow.markWorkCompleted(id);
@@ -227,6 +271,9 @@ contract StudentPayEscrowTest is Test {
 
     function test_claimRefund_revertsIfBuyerMarkedComplete() public {
         uint256 id = _createAndFundDeal();
+
+        vm.prank(seller);
+        escrow.submitWork(id, "proof");
 
         vm.prank(buyer);
         escrow.markWorkCompleted(id);

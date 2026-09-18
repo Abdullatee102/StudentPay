@@ -29,6 +29,15 @@ export const ESCROW_ABI = [
   },
   {
     type: 'event',
+    name: 'WorkSubmitted',
+    inputs: [
+      { name: 'dealId',     type: 'uint256', indexed: true  },
+      { name: 'seller',     type: 'address', indexed: true  },
+      { name: 'submission', type: 'string',  indexed: false },
+    ],
+  },
+  {
+    type: 'event',
     name: 'WorkCompleted',
     inputs: [
       { name: 'dealId',  type: 'uint256', indexed: true },
@@ -87,6 +96,7 @@ export const ESCROW_ABI = [
           { name: 'deadline',    type: 'uint256' },
           { name: 'status',      type: 'uint8'   },
           { name: 'description', type: 'string'  },
+          { name: 'workSubmission', type: 'string' },
           { name: 'createdAt',   type: 'uint256' },
         ],
       },
@@ -118,6 +128,16 @@ export const ESCROW_ABI = [
     name: 'fundDeal',
     stateMutability: 'payable',
     inputs: [{ name: 'dealId', type: 'uint256' }],
+    outputs: [],
+  },
+  {
+    type: 'function',
+    name: 'submitWork',
+    stateMutability: 'nonpayable',
+    inputs: [
+      { name: 'dealId',     type: 'uint256' },
+      { name: 'submission', type: 'string'  },
+    ],
     outputs: [],
   },
   {

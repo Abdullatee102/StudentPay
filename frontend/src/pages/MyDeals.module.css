@@ -55,7 +55,7 @@
   background: var(--colour-bg);
 }
 
-.dealLink {
+.dealId {
   font-family: var(--font-mono);
   font-weight: 700;
 }
@@ -79,6 +79,30 @@
   font-size: 0.85rem;
 }
 
+.actionCell {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.viewButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 4.5rem;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid var(--colour-accent);
+  border-radius: var(--radius-sm);
+  color: var(--colour-accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.viewButton:hover {
+  background: var(--colour-accent);
+  color: #fff;
+}
+
 .loading {
   color: var(--colour-text-muted);
   padding: var(--space-4);
@@ -96,5 +120,16 @@
 
 .emptyMsg {
   color: var(--colour-text-muted);
+}
+
+@media (max-width: 760px) {
+  .table {
+    min-width: 720px;
+  }
+
+  .table th,
+  .table td {
+    padding: var(--space-3);
+  }
 }
 

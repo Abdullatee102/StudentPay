@@ -43,6 +43,7 @@ contract StudentPayEscrow {
         uint256 deadline; // unix timestamp — seller must complete by this time
         DealStatus status;
         string description; // short human-readable description stored on-chain
+        string workSubmission; // seller's proof or link for the completed work
         uint256 createdAt;
     }
 
@@ -65,6 +66,7 @@ contract StudentPayEscrow {
     );
 
     event DealFunded(uint256 indexed dealId, address indexed buyer, uint256 amount);
+    event WorkSubmitted(uint256 indexed dealId, address indexed seller, string submission);
     event WorkCompleted(uint256 indexed dealId, address indexed seller);
     event FundsReleased(uint256 indexed dealId, address indexed seller, uint256 amount);
     event RefundClaimed(uint256 indexed dealId, address indexed buyer, uint256 amount);
@@ -83,6 +85,7 @@ contract StudentPayEscrow {
     error InvalidDeadline();
     error InvalidAmount();
     error InvalidAddress();
+    error EmptySubmission();
     error ReentrantCall();
     error TransferFailed();
 
@@ -162,6 +165,7 @@ contract StudentPayEscrow {
             deadline: deadline,
             status: DealStatus.PENDING_FUNDING,
             description: description,
+            workSubmission: "",
             createdAt: block.timestamp
         });
 
@@ -196,6 +200,25 @@ contract StudentPayEscrow {
     }
 
     /**
+     * @notice Submit proof or a link to the completed work.
+     * @dev Only the seller may submit while the deal is funded and before its deadline.
+     */
+    function submitWork(uint256 dealId, string calldata submission)
+        external
+        dealExists(dealId)
+        onlySeller(dealId)
+        inStatus(dealId, DealStatus.FUNDED)
+    {
+        if (bytes(submission).length == 0) revert EmptySubmission();
+        if (block.timestamp >= deals[dealId].deadline) {
+            revert DeadlinePassed(deals[dealId].deadline, block.timestamp);
+        }
+
+        deals[dealId].workSubmission = submission;
+        emit WorkSubmitted(dealId, msg.sender, submission);
+    }
+
+    /**
      * @notice Buyer confirms that the seller's work is complete.
      * @dev Only callable by the buyer once the deal is in FUNDED state.
      *      This does NOT release funds — the buyer must still release them.
@@ -206,7 +229,10 @@ contract StudentPayEscrow {
         onlyBuyer(dealId)
         inStatus(dealId, DealStatus.FUNDED)
     {
-        deals[dealId].status = DealStatus.COMPLETED;
+        Deal storage deal = deals[dealId];
+        if (bytes(deal.workSubmission).length == 0) revert EmptySubmission();
+
+        deal.status = DealStatus.COMPLETED;
         emit WorkCompleted(dealId, msg.sender);
     }
 

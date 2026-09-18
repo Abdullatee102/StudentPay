@@ -1,9 +1,11 @@
 import { useParams, Link } from 'react-router-dom'
+import { useState } from 'react'
 import { formatEther } from 'viem'
 import { useWallet } from '@/hooks/useWallet'
 import {
   useGetDeal,
   useFundDeal,
+  useSubmitWork,
   useMarkWorkCompleted,
   useReleaseFunds,
   useClaimRefund,
@@ -25,6 +27,7 @@ export default function DealDetails() {
   )
 
   const fundHook     = useFundDeal()
+  const submitHook   = useSubmitWork()
   const completedHook = useMarkWorkCompleted()
   const releaseHook  = useReleaseFunds()
   const refundHook   = useClaimRefund()
@@ -48,6 +51,7 @@ export default function DealDetails() {
   const now      = Math.floor(Date.now() / 1000)
   const deadline = Number(deal.deadline)
   const deadlinePassed = now >= deadline
+  const hasSubmission = deal.workSubmission.trim().length > 0
 
   const explorerAddress = (addr: string) =>
     `${NETWORK_CONFIG.explorerUrl}${NETWORK_CONFIG.explorerAddressPath}${addr}`
@@ -121,6 +125,13 @@ export default function DealDetails() {
         </div>
       </div>
 
+      {hasSubmission && (
+        <div className={`card ${styles.submissionCard}`}>
+          <p className={styles.fieldLabel}>Seller submission</p>
+          <p className={styles.submission}>{deal.workSubmission}</p>
+        </div>
+      )}
+
       {/* Actions */}
       <div className={`card ${styles.actions}`}>
         <h2 className={styles.actionsTitle}>Actions</h2>
@@ -144,9 +155,19 @@ export default function DealDetails() {
           </ActionBlock>
         )}
 
+        {/* SELLER: Submit work */}
+        {isSeller && status === DealStatus.FUNDED && !deadlinePassed && (
+          <SubmitWorkBlock
+            dealId={deal.id}
+            initialSubmission={deal.workSubmission}
+            submitHook={submitHook}
+            onSuccess={handleSuccess}
+          />
+        )}
+
         {/* BUYER: Confirm completion */}
-        {isBuyer && status === DealStatus.FUNDED && !deadlinePassed && (
-          <ActionBlock label="Confirm that the seller has completed the agreed work.">
+        {isBuyer && status === DealStatus.FUNDED && !deadlinePassed && hasSubmission && (
+          <ActionBlock label="Review the seller's submission above, then confirm that the work is complete.">
             <button
               className="btn btn-primary"
               disabled={completedHook.isPending || completedHook.receipt.isLoading}
@@ -163,10 +184,12 @@ export default function DealDetails() {
           </ActionBlock>
         )}
 
+        {isBuyer && status === DealStatus.FUNDED && !deadlinePassed && !hasSubmission && (
+          <p className={styles.terminalMsg}>Waiting for the seller to submit their completed work.</p>
+        )}
+
         {isSeller && status === DealStatus.FUNDED && !deadlinePassed && (
-          <p className={styles.terminalMsg}>
-            Awaiting the buyer&apos;s completion confirmation.
-          </p>
+          hasSubmission && <p className={styles.terminalMsg}>Your submission is ready for the buyer&apos;s review.</p>
         )}
 
         {/* BUYER: Release funds */}
@@ -243,6 +266,46 @@ function ActionBlock({ label, children }: { label: string; children: React.React
     <div className={styles.actionBlock}>
       <p className={styles.actionLabel}>{label}</p>
       {children}
+    </div>
+  )
+}
+
+function SubmitWorkBlock({
+  dealId,
+  initialSubmission,
+  submitHook,
+  onSuccess,
+}: {
+  dealId: bigint
+  initialSubmission: string
+  submitHook: ReturnType<typeof useSubmitWork>
+  onSuccess: () => void
+}) {
+  const [submission, setSubmission] = useState(initialSubmission)
+
+  return (
+    <div className={styles.actionBlock}>
+      <p className={styles.actionLabel}>Share a link or describe the completed work for the buyer to review.</p>
+      <textarea
+        className="form-input"
+        rows={4}
+        value={submission}
+        onChange={(event) => setSubmission(event.target.value)}
+        placeholder="Paste a link or describe your completed work"
+      />
+      <button
+        className="btn btn-primary"
+        disabled={!submission.trim() || submitHook.isPending || submitHook.receipt.isLoading}
+        onClick={() => { submitHook.submitWork(dealId, submission.trim()); onSuccess() }}
+      >
+        {submitHook.isPending ? 'Confirm in Wallet…' : 'Submit Work'}
+      </button>
+      <TxStatus
+        hash={submitHook.hash}
+        isPending={submitHook.receipt.isLoading}
+        isConfirmed={submitHook.receipt.isSuccess}
+        error={submitHook.error}
+      />
     </div>
   )
 }

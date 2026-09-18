@@ -115,6 +115,23 @@ export function useMarkWorkCompleted() {
   return { markCompleted, hash, isPending, error, receipt }
 }
 
+// ── Write: submit completed work ─────────────────────────────────────────────
+export function useSubmitWork() {
+  const { writeContract, data: hash, isPending, error } = useWriteContract()
+  const receipt = useWaitForTransactionReceipt({ hash })
+
+  const submitWork = (dealId: bigint, submission: string) => {
+    writeContract({
+      abi:          ESCROW_ABI,
+      address:      requireEscrowAddress(),
+      functionName: 'submitWork',
+      args:         [dealId, submission],
+    })
+  }
+
+  return { submitWork, hash, isPending, error, receipt }
+}
+
 // ── Write: release funds ──────────────────────────────────────────────────────
 export function useReleaseFunds() {
   const { writeContract, data: hash, isPending, error } = useWriteContract()
@@ -177,6 +194,7 @@ export function normaliseDeal(raw: any): Deal {
     deadline:    raw.deadline,
     status:      raw.status as DealStatus,
     description: raw.description,
+    workSubmission: raw.workSubmission,
     createdAt:   raw.createdAt,
   }
 }

@@ -38,6 +38,7 @@ export interface Deal {
   deadline:    bigint
   status:      DealStatus
   description: string
+  workSubmission: string
   createdAt:   bigint
 }
 

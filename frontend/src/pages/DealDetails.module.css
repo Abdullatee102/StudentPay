@@ -55,6 +55,16 @@
   line-height: 1.6;
 }
 
+.submissionCard {
+  border-left: 4px solid var(--colour-accent);
+}
+
+.submission {
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
 .amount {
   font-family: var(--font-mono);
   font-size: 1.2rem;
@@ -96,6 +106,16 @@
 .actionLabel {
   font-size: 0.875rem;
   color: var(--colour-text-muted);
+}
+
+.actionBlock textarea {
+  width: 100%;
+  min-height: 7rem;
+  resize: vertical;
+}
+
+.actionBlock .btn {
+  align-self: flex-start;
 }
 
 .terminalMsg {
