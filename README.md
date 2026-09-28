@@ -1,4 +1,4 @@
-# BotStudentPay Escrow
+# StudentPay Escrow
 
 > Peer-to-peer crypto escrow for students — trustless, transparent, on-chain.
 
@@ -18,7 +18,7 @@ Traditional payment platforms require personal banking, charge fees, and central
 
 A smart contract is a neutral, uncensorable third party. It holds funds in escrow and only releases them when the agreed conditions are met — provably and automatically, without requiring either party to trust the other or a platform operator.
 
-BotStudentPay uses **no backend database**, **no centralised authentication**, and **no server that could go down or be compromised**. The smart contract _is_ the application logic.
+StudentPay uses **no backend database**, **no centralised authentication**, and **no server that could go down or be compromised**. The smart contract _is_ the application logic.
 
 ---
 
@@ -173,10 +173,8 @@ RELEASED                                        REFUNDED
 VITE_REOWN_PROJECT_ID=      # From https://cloud.reown.com
 VITE_BOHR_RPC_URL=https://rpc.bohr.life
 VITE_BOHR_CHAIN_ID=968
-VITE_ESCROW_CONTRACT_ADDRESS=0xC434E1E19c54d3Bb451dAf8D2eF8C64aa40B086A
+VITE_ESCROW_CONTRACT_ADDRESS=  # After deployment
 ```
-
-Deployed contract: [StudentPayEscrow on Bohr Explorer](https://scan.bohr.life/address/0xC434E1E19c54d3Bb451dAf8D2eF8C64aa40B086A)
 
 ### Deployment (`.env` — root level)
 

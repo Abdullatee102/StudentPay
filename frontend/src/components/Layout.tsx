@@ -1,41 +1,20 @@
-import { useState } from 'react'
 import { Outlet, NavLink } from 'react-router-dom'
 import WalletConnect from './WalletConnect'
 import NetworkGuard from './NetworkGuard'
 import styles from './Layout.module.css'
 
 export default function Layout() {
-  const [menuOpen, setMenuOpen] = useState(false)
-  const closeMenu = () => setMenuOpen(false)
-
   return (
     <div className={styles.root}>
       {/* ── Header ─────────────────────────────────────────────────────────── */}
       <header className={styles.header}>
         <div className={styles.headerInner}>
-          <NavLink to="/" className={styles.logo} onClick={closeMenu}>
+          <NavLink to="/" className={styles.logo}>
             <span className={styles.logoMark}>⛓</span>
-            <span>BotStudentPay</span>
+            <span>StudentPay</span>
           </NavLink>
 
-          <button
-            type="button"
-            className={styles.menuButton}
-            aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-            aria-expanded={menuOpen}
-            aria-controls="primary-navigation"
-            onClick={() => setMenuOpen((open) => !open)}
-          >
-            <span />
-            <span />
-            <span />
-          </button>
-
-          <nav
-            id="primary-navigation"
-            className={`${styles.nav} ${menuOpen ? styles.navOpen : ''}`}
-            onClick={closeMenu}
-          >
+          <nav className={styles.nav}>
             <NavLink
               to="/"
               end
@@ -63,7 +42,7 @@ export default function Layout() {
             </NavLink>
           </nav>
 
-          <div className={styles.wallet}><WalletConnect /></div>
+          <WalletConnect />
         </div>
       </header>
 
@@ -77,7 +56,7 @@ export default function Layout() {
       {/* ── Footer ─────────────────────────────────────────────────────────── */}
       <footer className={styles.footer}>
         <p>
-          BotStudentPay Escrow · Powered by{' '}
+          StudentPay Escrow · Powered by{' '}
           <a
             href="https://scan.bohr.life"
             target="_blank"

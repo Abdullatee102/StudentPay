@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-6);
-  max-width: 800px;
+  max-width: 840px;
 }
 
 .loading {
@@ -30,6 +30,170 @@
   font-weight: 700;
 }
 
+/* ── Status Banners ───────────────────────────────────────────────────────── */
+.reviewBanner {
+  background: rgba(139, 92, 246, 0.12);
+  border: 1px solid rgba(139, 92, 246, 0.35);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.autoReleaseReadyBanner {
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-6);
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.deadlinePassedBanner {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-6);
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.disputeBanner {
+  background: rgba(236, 72, 153, 0.12);
+  border: 1px solid rgba(236, 72, 153, 0.35);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-6);
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.bannerHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.bannerIcon {
+  font-size: 1.75rem;
+  flex-shrink: 0;
+}
+
+.bannerTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.bannerSub {
+  font-size: 0.875rem;
+  color: var(--colour-text-muted);
+}
+
+.bannerExplanation {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--colour-text);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: var(--space-2);
+}
+
+/* ── Deliverable Review & Unlocked Cards ───────────────────────────────────── */
+.deliverableReviewCard {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(59, 130, 246, 0.1) 100%);
+  border: 1px solid rgba(139, 92, 246, 0.4);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.deliverableUnlockedCard {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(16, 185, 129, 0.1) 100%);
+  border: 1px solid rgba(34, 197, 94, 0.4);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.cardTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.cardSub {
+  font-size: 0.875rem;
+  color: var(--colour-text-muted);
+  margin: 0;
+}
+
+.previewBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 14px rgba(139, 92, 246, 0.3);
+}
+
+.previewBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.45);
+}
+
+.unlockBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 14px rgba(34, 197, 94, 0.3);
+}
+
+.unlockBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(34, 197, 94, 0.45);
+}
+
+.lockedNotice {
+  font-size: 0.85rem;
+  color: #a78bfa;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* ── Info Grid ────────────────────────────────────────────────────────────── */
 .infoGrid {
   display: flex;
   flex-direction: column;
@@ -55,32 +219,111 @@
   line-height: 1.6;
 }
 
-.submissionCard {
-  border-left: 4px solid var(--colour-accent);
-}
-
-.submission {
-  line-height: 1.6;
-  overflow-wrap: anywhere;
-  white-space: pre-wrap;
-}
-
 .amount {
   font-family: var(--font-mono);
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--colour-accent);
 }
 
 .deadlinePassed {
   color: var(--colour-danger);
+  font-weight: 600;
 }
 
 .addrLink {
   word-break: break-all;
 }
 
-/* ── Actions card ─────────────────────────────────────────────────────────── */
+/* ── Blinded Proof Card ───────────────────────────────────────────────────── */
+.proofCard {
+  background: var(--colour-bg);
+  border: 1px solid var(--colour-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.proofHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.proofTag {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #a78bfa;
+}
+
+.proofTime {
+  font-size: 0.8rem;
+  color: var(--colour-text-muted);
+}
+
+.proofHelp {
+  font-size: 0.85rem;
+  color: var(--colour-text-muted);
+}
+
+.hashBox {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: rgba(0, 0, 0, 0.25);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  overflow-x: auto;
+}
+
+.hashLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--colour-text-muted);
+  text-transform: uppercase;
+}
+
+.hashCode {
+  font-size: 0.8rem;
+  color: #38bdf8;
+  word-break: break-all;
+}
+
+.revealedProofBox {
+  background: rgba(34, 197, 94, 0.08);
+  border: 1px solid rgba(34, 197, 94, 0.25);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+.revealedLabel {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--colour-success);
+  display: block;
+  margin-bottom: var(--space-1);
+}
+
+.revealedText {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  word-break: break-all;
+  color: var(--colour-text);
+}
+
+.blindedNotice {
+  font-size: 0.8rem;
+  color: var(--colour-text-muted);
+  font-style: italic;
+  margin-top: var(--space-1);
+}
+
+/* ── Actions Card ─────────────────────────────────────────────────────────── */
 .actions {
   display: flex;
   flex-direction: column;
@@ -88,38 +331,123 @@
 }
 
 .actionsTitle {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 700;
   margin-bottom: var(--space-2);
+}
+
+.reviewActionGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
 }
 
 .actionBlock {
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
+  gap: var(--space-2);
   padding: var(--space-4);
   background: var(--colour-bg);
   border-radius: var(--radius-md);
   border: 1px solid var(--colour-border);
 }
 
-.actionLabel {
-  font-size: 0.875rem;
+.actionTitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.actionDesc {
+  font-size: 0.85rem;
+  color: var(--colour-text-muted);
+  line-height: 1.5;
+  margin-bottom: var(--space-2);
+}
+
+.submissionForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.inputLabel {
+  font-size: 0.8rem;
+  font-weight: 600;
   color: var(--colour-text-muted);
 }
 
-.actionBlock textarea {
-  width: 100%;
-  min-height: 7rem;
-  resize: vertical;
+.hashPreview {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  border-left: 2px solid var(--colour-accent);
 }
 
-.actionBlock .btn {
-  align-self: flex-start;
+.hashPreviewLabel {
+  color: var(--colour-text-muted);
+  font-weight: 600;
+}
+
+.validationMsg {
+  color: #ef4444;
+  font-size: 0.85rem;
+  margin: 0;
+  padding: 0.4rem 0.6rem;
+  background: rgba(239, 68, 68, 0.1);
+  border-radius: 4px;
 }
 
 .terminalMsg {
   color: var(--colour-text-muted);
   font-style: italic;
+  padding: var(--space-2) 0;
 }
 
+/* ── Confirmation Modal ───────────────────────────────────────────────────── */
+.confirmOverlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+  z-index: 1050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.confirmModal {
+  background: var(--colour-bg-card, #12151e);
+  border: 1px solid var(--colour-border, #262b3d);
+  border-radius: 16px;
+  max-width: 480px;
+  width: 100%;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+}
+
+.confirmTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.confirmBody {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #e2e8f0;
+}
+
+.confirmButtons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}

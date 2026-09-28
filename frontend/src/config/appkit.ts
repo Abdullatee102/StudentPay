@@ -7,18 +7,15 @@ import { createAppKit } from '@reown/appkit'
 import { SUPPORTED_CHAINS } from './chains'
 import { REOWN_PROJECT_ID, wagmiAdapter } from './wagmi'
 
-const APP_URL =
-  import.meta.env.VITE_APP_URL ?? 'https://student-pay.vercel.app'
-
 createAppKit({
   adapters: [wagmiAdapter],
   networks: SUPPORTED_CHAINS,
   defaultNetwork: SUPPORTED_CHAINS[0],
   projectId: REOWN_PROJECT_ID,
   metadata: {
-    name: 'BotStudentPay Escrow',
+    name: 'StudentPay Escrow',
     description: 'Peer-to-peer crypto escrow for students — powered by Bohr Testnet',
-    url: APP_URL,
+    url: typeof window !== 'undefined' ? window.location.origin : '',
     icons: ['/logo.svg'],
   },
   features: {

@@ -16,10 +16,10 @@ export default function Dashboard() {
       {/* Hero */}
       <section className={styles.hero}>
         <h1 className={styles.heroTitle}>
-          Bot<span className={styles.accent}>StudentPay</span> Escrow
+          Student<span className={styles.accent}>Pay</span> Escrow
         </h1>
         <p className={styles.heroSub}>
-          Peer-to-peer crypto escrow for student services — trustless, transparent, on-chain.
+          Peer-to-peer crypto escrow for student services — fortified with blinded proof commitments, 48-hour review windows, and anti-ghosting auto-release.
         </p>
         <div className={styles.heroCtas}>
           {isConnected ? (
@@ -55,18 +55,17 @@ export default function Dashboard() {
           <p className={styles.statSub}>Chain ID: 968 · Token: BOT</p>
         </div>
         <div className="card">
-          <p className={styles.statLabel}>Contract</p>
-          <p className={styles.statValue} style={{ fontSize: '0.8rem' }}>
-            {contractDeployed
-              ? CONTRACT_ADDRESSES.escrow
-              : 'Not yet deployed'}
+          <p className={styles.statLabel}>Escrow Protection</p>
+          <p className={styles.statValue} style={{ fontSize: '1.1rem', color: 'var(--colour-accent)' }}>
+            Blinded Proof V2
           </p>
+          <p className={styles.statSub}>48h Grace Window · Anti-Ghosting</p>
         </div>
       </section>
 
       {/* How it works */}
       <section className={styles.howItWorks}>
-        <h2 className={styles.sectionTitle}>How It Works</h2>
+        <h2 className={styles.sectionTitle}>How V2 Escrow Works</h2>
         <div className={styles.steps}>
           {STEPS.map((step, i) => (
             <div key={i} className={`card ${styles.step}`}>
@@ -83,20 +82,23 @@ export default function Dashboard() {
 
 const STEPS = [
   {
-    title: 'Create a Deal',
-    desc: 'Specify the seller, payment amount in BOT, deadline, and description of the work.',
+    title: '1. Create a Deal',
+    desc: 'Agree on the work, amount, deadline and terms. Buyer locks BOT tokens securely in the smart contract.',
   },
   {
-    title: 'Lock Funds',
-    desc: 'Send the agreed amount to the smart contract. Funds are held securely on-chain.',
+    title: '2. Seller Submits',
+    desc: 'The seller submits the actual work and StudentPay records a cryptographic commitment.',
   },
   {
-    title: 'Work Is Delivered',
-    desc: 'The seller completes the work and marks it done. The buyer confirms delivery.',
+    title: '3. Buyer Inspects',
+    desc: 'The buyer can view a protected preview of the submitted work, but cannot obtain the original/usable deliverable before payment.',
   },
   {
-    title: 'Funds Released',
-    desc: 'Payment is automatically sent to the seller. Or reclaim your funds if the deadline passes.',
+    title: '4. Accept or Dispute',
+    desc: 'The buyer accepts the work and releases payment, or opens a dispute if the requirements were not met within the 48-hour review window.',
+  },
+  {
+    title: '5. Deliverable Unlocks',
+    desc: 'After successful payment release, the original deliverable becomes available to the buyer.',
   },
 ]
-

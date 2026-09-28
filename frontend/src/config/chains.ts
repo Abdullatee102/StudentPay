@@ -4,7 +4,7 @@
 // All network settings live here. To switch networks, update this file only.
 // ─────────────────────────────────────────────────────────────────────────────
 
-import { defineChain, type Address } from 'viem'
+import { defineChain } from 'viem'
 
 // ── Bohr Testnet ──────────────────────────────────────────────────────────────
 export const bohrTestnet = defineChain({
@@ -30,12 +30,12 @@ export const bohrTestnet = defineChain({
 })
 
 // ── Supported chains (add mainnet here when going to production) ───────────────
-export const SUPPORTED_CHAINS = [bohrTestnet] as [typeof bohrTestnet]
+export const SUPPORTED_CHAINS: [typeof bohrTestnet, ...(typeof bohrTestnet)[]] = [bohrTestnet]
 
 // ── Contract addresses ────────────────────────────────────────────────────────
 // Populated after deployment. Use VITE_ESCROW_CONTRACT_ADDRESS in .env.local
 export const CONTRACT_ADDRESSES = {
-  escrow: import.meta.env.VITE_ESCROW_CONTRACT_ADDRESS as Address | undefined,
+  escrow: (import.meta.env.VITE_ESCROW_CONTRACT_ADDRESS ?? '') as `0x${string}`,
 } as const
 
 // ── Network metadata ──────────────────────────────────────────────────────────
@@ -45,4 +45,3 @@ export const NETWORK_CONFIG = {
   explorerTxPath: '/tx/',
   explorerAddressPath: '/address/',
 } as const
-

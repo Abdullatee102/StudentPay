@@ -65,8 +65,27 @@ export default function CreateDeal() {
     <div className={styles.root}>
       <h1 className={styles.title}>Create a New Deal</h1>
       <p className={styles.subtitle}>
-        Lock funds in escrow and release them only when work is delivered.
+        Lock funds in a trustless escrow protected by cryptographic commitments and review windows.
       </p>
+
+      {/* ── Instructional Security Guardrails ─────────────────────────────── */}
+      <div className={styles.guardrailCard}>
+        <div className={styles.guardrailHeader}>
+          <span className={styles.guardrailIcon}>🛡️</span>
+          <h3 className={styles.guardrailTitle}>How V2 Escrow Protects You</h3>
+        </div>
+        <ul className={styles.guardrailList}>
+          <li>
+            <strong>Blinded Proof Commitments:</strong> Sellers commit a cryptographic hash of their deliverable on-chain. Deliverables cannot be stolen by clients before payment.
+          </li>
+          <li>
+            <strong>Strict Submission Deadline:</strong> Sellers must submit their proof commitment before the agreed deadline. If missed, the review window is disabled and the buyer can claim an instant 100% refund.
+          </li>
+          <li>
+            <strong>48-Hour Review & Dispute Window:</strong> Buyers have 48 hours to inspect work or open a dispute for a full refund. If the buyer is unresponsive, the seller is protected by automatic release.
+          </li>
+        </ul>
+      </div>
 
       <form className={`card ${styles.form}`} onSubmit={handleSubmit}>
         <div className="form-group">
@@ -104,7 +123,7 @@ export default function CreateDeal() {
 
         <div className="form-group">
           <label className="form-label" htmlFor="deadlineDate">
-            Deadline
+            Submission Deadline
           </label>
           <input
             className="form-input"
@@ -115,17 +134,20 @@ export default function CreateDeal() {
             onChange={handleChange}
             required
           />
+          <span className={styles.fieldHint}>
+            Seller must submit proof before this exact timestamp to activate the review window.
+          </span>
         </div>
 
         <div className="form-group">
           <label className="form-label" htmlFor="description">
-            Description of Work
+            Description of Work & Requirements
           </label>
           <textarea
             className={`form-input ${styles.textarea}`}
             id="description"
             name="description"
-            placeholder="E.g. Design a logo for my student society — 3 concepts, 2 revisions included."
+            placeholder="Specify clear requirements, deliverables, and acceptance criteria."
             value={form.description}
             onChange={handleChange}
             rows={4}
@@ -156,4 +178,3 @@ export default function CreateDeal() {
     </div>
   )
 }
-

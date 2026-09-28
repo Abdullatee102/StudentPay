@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // Wagmi Configuration
 // ─────────────────────────────────────────────────────────────────────────────
-import { createConfig, http, type Config } from 'wagmi'
+import { createConfig, http } from 'wagmi'
 import { WagmiAdapter } from '@reown/appkit-adapter-wagmi'
 import { bohrTestnet, SUPPORTED_CHAINS } from './chains'
 
@@ -12,7 +12,7 @@ export const REOWN_PROJECT_ID: string =
 
 if (!REOWN_PROJECT_ID) {
   console.warn(
-    '[BotStudentPay] VITE_REOWN_PROJECT_ID is not set. ' +
+    '[StudentPay] VITE_REOWN_PROJECT_ID is not set. ' +
       'Wallet connection UI may not load correctly. ' +
       'Create a project at https://cloud.reown.com and add it to .env.local'
   )
@@ -26,7 +26,7 @@ export const wagmiAdapter = new WagmiAdapter({
 })
 
 // ── Wagmi config ──────────────────────────────────────────────────────────────
-export const wagmiConfig = wagmiAdapter.wagmiConfig as unknown as Config
+export const wagmiConfig = wagmiAdapter.wagmiConfig
 
 // ── Standalone wagmi config (for use outside AppKit context if needed) ─────────
 export const standaloneWagmiConfig = createConfig({

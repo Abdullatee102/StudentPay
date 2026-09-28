@@ -1,5 +1,5 @@
 .root {
-  max-width: 620px;
+  max-width: 680px;
   margin: 0 auto;
 }
 
@@ -11,7 +11,54 @@
 
 .subtitle {
   color: var(--colour-text-muted);
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-6);
+}
+
+/* ── Security Guardrails Card ─────────────────────────────────────────────── */
+.guardrailCard {
+  background: rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-6);
+  margin-bottom: var(--space-6);
+}
+
+.guardrailHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.guardrailIcon {
+  font-size: 1.25rem;
+}
+
+.guardrailTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--colour-accent-hover);
+}
+
+.guardrailList {
+  margin: 0;
+  padding-left: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--colour-text-muted);
+}
+
+.guardrailList strong {
+  color: var(--colour-text);
+}
+
+.fieldHint {
+  font-size: 0.75rem;
+  color: var(--colour-text-muted);
+  margin-top: 2px;
 }
 
 .form {
@@ -38,4 +85,3 @@
   padding: var(--space-12);
   color: var(--colour-text-muted);
 }
-

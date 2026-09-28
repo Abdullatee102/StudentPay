@@ -44,3 +44,8 @@ Thumbs.db
 .vscode/settings.json
 *.suo
 *.user
+
+# =============================================
+# TypeScript build info
+# =============================================
+frontend/tsconfig*.tsbuildinfo

@@ -7,7 +7,7 @@ import { DealStatus } from '@/contracts/types'
 import styles from './MyDeals.module.css'
 import '@/styles/components.css'
 
-// ── Single deal row (fetches own data) ────────────────────────────────────────
+// ── Single deal row ───────────────────────────────────────────────────────────
 function DealRow({ dealId, viewerAddress }: { dealId: bigint; viewerAddress: string }) {
   const { data: deal, isLoading } = useGetDeal(dealId)
 
@@ -20,28 +20,28 @@ function DealRow({ dealId, viewerAddress }: { dealId: bigint; viewerAddress: str
   }
   if (!deal) return null
 
-  const isBuyer  = deal.buyer.toLowerCase()  === viewerAddress.toLowerCase()
+  const isBuyer  = deal.buyer.toLowerCase() === viewerAddress.toLowerCase()
   const deadline = new Date(Number(deal.deadline) * 1000)
 
   return (
     <tr className={styles.row}>
       <td>
-        <span className={styles.dealId}>{deal.id.toString()}</span>
+        <span className={styles.dealId}>#{deal.id.toString()}</span>
       </td>
       <td>
         <span className={styles.role}>{isBuyer ? '🛒 Buyer' : '🔨 Seller'}</span>
       </td>
       <td className={styles.description} title={deal.description}>
-        {deal.description.length > 50
-          ? `${deal.description.slice(0, 50)}…`
+        {deal.description.length > 40
+          ? `${deal.description.slice(0, 40)}…`
           : deal.description}
       </td>
       <td className={styles.amount}>{formatEther(deal.amount)} BOT</td>
       <td><DealStatusBadge status={deal.status as DealStatus} /></td>
       <td className={styles.deadline}>{deadline.toLocaleDateString()}</td>
-      <td className={styles.actionCell}>
-        <Link to={`/deals/${deal.id.toString()}`} className={styles.viewButton}>
-          View
+      <td>
+        <Link to={`/deals/${deal.id.toString()}`} className={styles.viewBtn}>
+          View →
         </Link>
       </td>
     </tr>
@@ -122,4 +122,3 @@ export default function MyDeals() {
     </div>
   )
 }
-

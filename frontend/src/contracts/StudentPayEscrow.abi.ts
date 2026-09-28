@@ -1,8 +1,5 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// StudentPayEscrow ABI
-// ─────────────────────────────────────────────────────────────────────────────
-// Copy the compiled ABI from out/StudentPayEscrow.sol/StudentPayEscrow.json
-// after running: forge build
+// StudentPayEscrow ABI (V2: Blinded Proofs, Grace Period, Disputes & Auto-Release)
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const ESCROW_ABI = [
@@ -29,19 +26,21 @@ export const ESCROW_ABI = [
   },
   {
     type: 'event',
-    name: 'WorkSubmitted',
+    name: 'ProofSubmitted',
     inputs: [
-      { name: 'dealId',     type: 'uint256', indexed: true  },
-      { name: 'seller',     type: 'address', indexed: true  },
-      { name: 'submission', type: 'string',  indexed: false },
+      { name: 'dealId',         type: 'uint256', indexed: true  },
+      { name: 'seller',         type: 'address', indexed: true  },
+      { name: 'commitmentHash', type: 'bytes32', indexed: false },
+      { name: 'submittedAt',    type: 'uint256', indexed: false },
+      { name: 'graceEndsAt',    type: 'uint256', indexed: false },
     ],
   },
   {
     type: 'event',
-    name: 'WorkCompleted',
+    name: 'ProofRevealed',
     inputs: [
-      { name: 'dealId',  type: 'uint256', indexed: true },
-      { name: 'seller',  type: 'address', indexed: true },
+      { name: 'dealId',        type: 'uint256', indexed: true  },
+      { name: 'proofPreimage', type: 'string',  indexed: false },
     ],
   },
   {
@@ -51,6 +50,23 @@ export const ESCROW_ABI = [
       { name: 'dealId',  type: 'uint256', indexed: true  },
       { name: 'seller',  type: 'address', indexed: true  },
       { name: 'amount',  type: 'uint256', indexed: false },
+    ],
+  },
+  {
+    type: 'event',
+    name: 'AutoReleased',
+    inputs: [
+      { name: 'dealId',  type: 'uint256', indexed: true  },
+      { name: 'seller',  type: 'address', indexed: true  },
+      { name: 'amount',  type: 'uint256', indexed: false },
+    ],
+  },
+  {
+    type: 'event',
+    name: 'DisputeOpened',
+    inputs: [
+      { name: 'dealId', type: 'uint256', indexed: true  },
+      { name: 'buyer',  type: 'address', indexed: true  },
     ],
   },
   {
@@ -81,6 +97,20 @@ export const ESCROW_ABI = [
   },
   {
     type: 'function',
+    name: 'GRACE_PERIOD',
+    stateMutability: 'view',
+    inputs: [],
+    outputs: [{ name: '', type: 'uint256' }],
+  },
+  {
+    type: 'function',
+    name: 'isGracePeriodActive',
+    stateMutability: 'view',
+    inputs: [{ name: 'dealId', type: 'uint256' }],
+    outputs: [{ name: '', type: 'bool' }],
+  },
+  {
+    type: 'function',
     name: 'getDeal',
     stateMutability: 'view',
     inputs: [{ name: 'dealId', type: 'uint256' }],
@@ -89,15 +119,18 @@ export const ESCROW_ABI = [
         name: '',
         type: 'tuple',
         components: [
-          { name: 'id',          type: 'uint256' },
-          { name: 'buyer',       type: 'address' },
-          { name: 'seller',      type: 'address' },
-          { name: 'amount',      type: 'uint256' },
-          { name: 'deadline',    type: 'uint256' },
-          { name: 'status',      type: 'uint8'   },
-          { name: 'description', type: 'string'  },
-          { name: 'workSubmission', type: 'string' },
-          { name: 'createdAt',   type: 'uint256' },
+          { name: 'id',             type: 'uint256' },
+          { name: 'buyer',          type: 'address' },
+          { name: 'seller',         type: 'address' },
+          { name: 'amount',         type: 'uint256' },
+          { name: 'deadline',       type: 'uint256' },
+          { name: 'status',         type: 'uint8'   },
+          { name: 'description',    type: 'string'  },
+          { name: 'createdAt',      type: 'uint256' },
+          { name: 'commitmentHash', type: 'bytes32' },
+          { name: 'proofPreimage',  type: 'string'  },
+          { name: 'submittedAt',    type: 'uint256' },
+          { name: 'graceEndsAt',    type: 'uint256' },
         ],
       },
     ],
@@ -132,24 +165,51 @@ export const ESCROW_ABI = [
   },
   {
     type: 'function',
-    name: 'submitWork',
+    name: 'submitProof',
     stateMutability: 'nonpayable',
     inputs: [
-      { name: 'dealId',     type: 'uint256' },
-      { name: 'submission', type: 'string'  },
+      { name: 'dealId',         type: 'uint256' },
+      { name: 'commitmentHash', type: 'bytes32' },
     ],
     outputs: [],
   },
   {
     type: 'function',
-    name: 'markWorkCompleted',
+    name: 'revealProof',
+    stateMutability: 'nonpayable',
+    inputs: [
+      { name: 'dealId',   type: 'uint256' },
+      { name: 'rawProof', type: 'string'  },
+    ],
+    outputs: [],
+  },
+  {
+    type: 'function',
+    name: 'releaseFunds',
     stateMutability: 'nonpayable',
     inputs: [{ name: 'dealId', type: 'uint256' }],
     outputs: [],
   },
   {
     type: 'function',
-    name: 'releaseFunds',
+    name: 'releaseFundsWithProof',
+    stateMutability: 'nonpayable',
+    inputs: [
+      { name: 'dealId',   type: 'uint256' },
+      { name: 'rawProof', type: 'string'  },
+    ],
+    outputs: [],
+  },
+  {
+    type: 'function',
+    name: 'openDispute',
+    stateMutability: 'nonpayable',
+    inputs: [{ name: 'dealId', type: 'uint256' }],
+    outputs: [],
+  },
+  {
+    type: 'function',
+    name: 'claimAutoRelease',
     stateMutability: 'nonpayable',
     inputs: [{ name: 'dealId', type: 'uint256' }],
     outputs: [],
@@ -169,4 +229,3 @@ export const ESCROW_ABI = [
     outputs: [],
   },
 ] as const
-

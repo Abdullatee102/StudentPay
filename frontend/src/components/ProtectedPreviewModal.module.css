@@ -1,0 +1,251 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.modal {
+  background: var(--colour-bg-card, #12151e);
+  border: 1px solid var(--colour-border, #262b3d);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 860px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--colour-border, #262b3d);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #f8fafc;
+}
+
+.closeBtn {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.closeBtn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.banner {
+  padding: 0.85rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.bannerLocked {
+  background: rgba(139, 92, 246, 0.15);
+  color: #c084fc;
+  border-bottom: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.bannerUnlocked {
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+  border-bottom: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.contentBody {
+  padding: 1.5rem;
+  overflow-y: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.viewerContainer {
+  position: relative;
+  width: 100%;
+  min-height: 320px;
+  background: #090b10;
+  border: 1px solid var(--colour-border, #262b3d);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+/* Watermark Overlay */
+.watermarkOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  overflow: hidden;
+}
+
+.watermarkRow {
+  display: flex;
+  gap: 2rem;
+  white-space: nowrap;
+  opacity: 0.25;
+  transform: rotate(-15deg);
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: #ffffff;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(0,0,0,0.8);
+}
+
+/* Media Specific Styles */
+.previewImage {
+  max-width: 100%;
+  max-height: 500px;
+  object-fit: contain;
+}
+
+.previewVideo {
+  width: 100%;
+  max-height: 450px;
+  outline: none;
+}
+
+.previewAudio {
+  width: 90%;
+  margin: 2rem auto;
+}
+
+.previewIframe {
+  width: 100%;
+  height: 450px;
+  border: none;
+}
+
+.codeBox {
+  width: 100%;
+  height: 350px;
+  background: #0d1117;
+  color: #e6edf3;
+  padding: 1.25rem;
+  font-family: 'Fira Code', monospace, monospace;
+  font-size: 0.9rem;
+  overflow: auto;
+  border-radius: 8px;
+  white-space: pre-wrap;
+  user-select: none;
+}
+
+.notesCard {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--colour-border, #262b3d);
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+}
+
+.notesTitle {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  margin: 0 0 0.35rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.notesText {
+  margin: 0;
+  color: #e2e8f0;
+  font-size: 0.95rem;
+}
+
+.metaRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: #94a3b8;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+}
+
+.footer {
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid var(--colour-border, #262b3d);
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.downloadBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.lockedText {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .modal {
+    max-height: 95vh;
+  }
+  .header, .footer {
+    padding: 1rem;
+  }
+  .banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
