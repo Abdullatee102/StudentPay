@@ -9,10 +9,13 @@ export default function Layout() {
       {/* ── Header ─────────────────────────────────────────────────────────── */}
       <header className={styles.header}>
         <div className={styles.headerInner}>
-          <NavLink to="/" className={styles.logo}>
-            <span className={styles.logoMark}>⛓</span>
-            <span>StudentPay</span>
-          </NavLink>
+          <div className={styles.headerTop}>
+            <NavLink to="/" className={styles.logo}>
+              <span className={styles.logoMark}>⛓</span>
+              <span>StudentPay</span>
+            </NavLink>
+            <WalletConnect />
+          </div>
 
           <nav className={styles.nav}>
             <NavLink
@@ -41,8 +44,6 @@ export default function Layout() {
               + New Deal
             </NavLink>
           </nav>
-
-          <WalletConnect />
         </div>
       </header>
 
@@ -69,4 +70,3 @@ export default function Layout() {
     </div>
   )
 }
-

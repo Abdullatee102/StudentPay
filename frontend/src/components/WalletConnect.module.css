@@ -3,12 +3,14 @@
   align-items: center;
   gap: var(--space-3);
   margin-left: auto;
+  flex-shrink: 0;
 }
 
 .balance {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--colour-text-muted);
   font-family: var(--font-mono);
+  white-space: nowrap;
 }
 
 .symbol {
@@ -16,3 +18,8 @@
   font-weight: 700;
 }
 
+@media (max-width: 480px) {
+  .balance {
+    display: none;
+  }
+}

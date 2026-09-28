@@ -11,11 +11,12 @@
 }
 
 .heroTitle {
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: clamp(1.8rem, 6vw, 3.5rem);
   font-weight: 800;
   letter-spacing: -0.02em;
-  line-height: 1.1;
+  line-height: 1.15;
   margin-bottom: var(--space-4);
+  word-break: break-word;
 }
 
 .accent {
