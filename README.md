@@ -2,6 +2,9 @@
 
 > Peer-to-peer crypto escrow for students — trustless, transparent, on-chain.
 
+**🌐 Live Production Application**: [https://student-pay-rcpc.vercel.app](https://student-pay-rcpc.vercel.app)
+**🛡️ Active V2 Smart Contract**: [`0x7591428059DcAD6De8D51177080959F8B347603D`](https://scan.bohr.life/address/0x7591428059DcAD6De8D51177080959F8B347603D)
+
 ---
 
 ## The Problem
