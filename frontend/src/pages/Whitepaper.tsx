@@ -6,6 +6,10 @@ export default function Whitepaper() {
     window.open('/docs/studentpay-whitepaper.html', '_blank')
   }
 
+  const openPdf = () => {
+    window.open('/docs/studentpay-whitepaper.pdf', '_blank')
+  }
+
   return (
     <div className={styles.root}>
       {/* ── Header ─────────────────────────────────────────────────────────── */}
@@ -20,8 +24,11 @@ export default function Whitepaper() {
         </div>
         <div className={styles.actionRow}>
           <span className={styles.navBadge}>Verified On-Chain V2</span>
-          <button className="btn btn-primary" onClick={openStaticHtml}>
-            📄 Open / Print PDF Version
+          <button className="btn btn-secondary" onClick={openStaticHtml}>
+            👁️ Web / Print Version
+          </button>
+          <button className="btn btn-primary" onClick={openPdf}>
+            📥 Download PDF
           </button>
         </div>
       </div>
@@ -283,8 +290,8 @@ export default function Whitepaper() {
                 <a href="https://scan.bohr.life/address/0x7591428059DcAD6De8D51177080959F8B347603D" target="_blank" rel="noopener noreferrer" className="btn btn-secondary">
                   🔍 View Contract on Bohr Explorer
                 </a>
-                <button className="btn btn-primary" onClick={openStaticHtml}>
-                  🖨 Open / Print PDF Version
+                <button className="btn btn-primary" onClick={openPdf}>
+                  📥 Download PDF
                 </button>
               </div>
             </div>
