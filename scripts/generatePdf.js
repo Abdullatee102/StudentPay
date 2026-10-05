@@ -96,3 +96,4 @@ doc.end();
 writeStream.on('finish', () => {
   console.log('PDF GENERATED SUCCESSFULLY AT:', outputPath);
 });
+
