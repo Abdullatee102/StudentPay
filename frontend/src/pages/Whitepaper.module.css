@@ -1,0 +1,211 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  border-bottom: 1px solid var(--colour-border);
+  padding-bottom: var(--space-4);
+}
+
+.title {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.accent {
+  color: var(--colour-accent);
+}
+
+.actionRow {
+  display: flex;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+.navBadge {
+  background: rgba(99, 102, 241, 0.12);
+  color: var(--colour-accent-hover);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.layoutGrid {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: var(--space-8);
+}
+
+@media (max-width: 860px) {
+  .layoutGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tocSidebar {
+  position: sticky;
+  top: 90px;
+  height: fit-content;
+  background: var(--colour-surface);
+  border: 1px solid var(--colour-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.tocTitle {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--colour-text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.tocLink {
+  font-size: 0.85rem;
+  color: var(--colour-text-muted);
+  text-decoration: none;
+  padding: 0.3rem 0.5rem;
+  border-radius: var(--radius-sm);
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tocLink:hover {
+  color: var(--colour-text);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.contentArea {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.sectionCard {
+  background: var(--colour-surface);
+  border: 1px solid var(--colour-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.sectionHeading {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--colour-text);
+  border-bottom: 1px solid var(--colour-border);
+  padding-bottom: var(--space-2);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.sectionBody {
+  font-size: 0.95rem;
+  color: #cbd5e1;
+  line-height: 1.7;
+}
+
+.sectionBody p {
+  margin-bottom: var(--space-3);
+}
+
+.sectionBody ul {
+  margin-left: 1.5rem;
+  margin-bottom: var(--space-3);
+}
+
+.sectionBody li {
+  margin-bottom: var(--space-2);
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-3);
+}
+
+.featureCard {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--colour-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+
+.featureCardTitle {
+  font-weight: 700;
+  color: #f8fafc;
+  margin-bottom: var(--space-1);
+}
+
+.featureCardDesc {
+  font-size: 0.85rem;
+  color: var(--colour-text-muted);
+}
+
+.diagramContainer {
+  background: #090b10;
+  border: 1px solid var(--colour-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: #38bdf8;
+  overflow-x: auto;
+  white-space: pre;
+  margin: var(--space-3) 0;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: var(--space-3);
+}
+
+.table th, .table td {
+  border: 1px solid var(--colour-border);
+  padding: var(--space-3) var(--space-4);
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.table th {
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--colour-text);
+}
+
+.table td {
+  color: #cbd5e1;
+}
+
+.codeBadge {
+  font-family: var(--font-mono);
+  color: var(--colour-accent-hover);
+  background: rgba(99, 102, 241, 0.15);
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}

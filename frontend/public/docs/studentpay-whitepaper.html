@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudentPay Escrow — White Paper & Pitch Deck</title>
+  <style>
+    :root {
+      --bg: #0f0f13;
+      --card-bg: #1a1a24;
+      --border: #2d2d3d;
+      --accent: #6366f1;
+      --accent-light: #818cf8;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --success: #22c55e;
+      --warning: #f59e0b;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 3rem;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+
+    .header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .brand {
+      font-size: 1.8rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .brand span { color: var(--accent); }
+
+    .meta-tag {
+      background: rgba(99, 102, 241, 0.15);
+      color: var(--accent-light);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: 1px solid rgba(99, 102, 241, 0.3);
+    }
+
+    .print-btn {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    h1, h2, h3 { color: var(--text); font-weight: 700; margin-bottom: 1rem; }
+    h2 { font-size: 1.5rem; margin-top: 2.5rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; color: var(--accent-light); }
+    h3 { font-size: 1.15rem; margin-top: 1.2rem; }
+    p, li { color: #cbd5e1; font-size: 0.95rem; margin-bottom: 0.8rem; }
+    ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+    }
+    .card-title { font-weight: 700; color: #fff; margin-bottom: 0.4rem; }
+    .card-desc { font-size: 0.85rem; color: var(--text-muted); }
+
+    .diagram-box {
+      background: #090b10;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.85rem;
+      color: #38bdf8;
+      overflow-x: auto;
+      white-space: pre;
+      margin: 1.5rem 0;
+    }
+
+    .table-custom {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+    }
+    .table-custom th, .table-custom td {
+      border: 1px solid var(--border);
+      padding: 0.75rem 1rem;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+    .table-custom th { background: rgba(255, 255, 255, 0.04); color: var(--text); }
+
+    .footer {
+      margin-top: 3rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    @media print {
+      body { background: white; color: black; padding: 0; }
+      .container { border: none; box-shadow: none; max-width: 100%; padding: 0; background: white; }
+      .header-bar, .print-btn { display: none; }
+      h2 { color: #1e1b4b; border-bottom-color: #e2e8f0; }
+      p, li, th, td { color: #334155; }
+      .diagram-box { background: #f8fafc; color: #0f172a; border-color: #cbd5e1; }
+      .card { background: #f8fafc; border-color: #cbd5e1; }
+      .card-title { color: #0f172a; }
+      .card-desc { color: #475569; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header-bar">
+    <div class="brand">
+      ⛓ Student<span>Pay</span> Escrow
+    </div>
+    <div style="display: flex; gap: 0.75rem; align-items: center;">
+      <span class="meta-tag">V2 White Paper & Pitch Deck</span>
+      <button class="print-btn" onclick="window.print()">🖨 Print / Save PDF</button>
+    </div>
+  </div>
+
+  <!-- Cover -->
+  <div style="text-align: center; padding: 2rem 0; border-bottom: 1px solid var(--border);">
+    <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">StudentPay Escrow White Paper</h1>
+    <p style="font-size: 1.2rem; color: var(--accent-light); font-weight: 600;">
+      Trustless Peer-to-Peer Student Micro-Services Escrow on Bohr Testnet
+    </p>
+    <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted);">
+      Contract Address: <code style="color: #38bdf8;">0x7591428059DcAD6De8D51177080959F8B347603D</code> · Chain ID: 968
+    </p>
+  </div>
+
+  <!-- Section 1 -->
+  <h2>1. The Problem</h2>
+  <p>Students frequently exchange services with peers for tutoring, design, software development, video editing, essay proofreading, and campus event organization. These informal agreements carry severe risks:</p>
+  <ul>
+    <li><strong>Upfront Payment Risk</strong>: Buyers pay upfront and sellers ghost or deliver substandard work.</li>
+    <li><strong>Post-Delivery Non-Payment</strong>: Sellers deliver finished assets, but buyers refuse to pay.</li>
+    <li><strong>Work-Stealing Vulnerability</strong>: Digital previews are often stolen or copied prior to payment release.</li>
+    <li><strong>Centralized Intermediary Overhead</strong>: Traditional payment apps charge 10%-20% fees and rely on server databases vulnerable to outages and censorship.</li>
+  </ul>
+
+  <!-- Section 2 -->
+  <h2>2. The Opportunity</h2>
+  <p>Higher education campuses host vibrant micro-economies. A decentralized, zero-commission escrow platform enables students to monetize skills safely without trusting unknown peers or relying on traditional banking infrastructure.</p>
+
+  <!-- Section 3 -->
+  <h2>3. The StudentPay Solution</h2>
+  <p>StudentPay eliminates counterparty risk using non-custodial smart contracts, cryptographic commitments, and dual-level deliverable access control:</p>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-title">Zero Centralized Backend</div>
+      <div class="card-desc">No Express server, PostgreSQL, or Supabase. The smart contract on Bohr Testnet handles all state and business logic.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Blinded Proof Commitments</div>
+      <div class="card-desc">Sellers commit a cryptographic hash (<code>keccak256</code>) of their deliverable before the deadline to prevent late work and theft.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Protected Preview Inspection</div>
+      <div class="card-desc">Buyers inspect watermarked previews (<code>STUDENTPAY • PREVIEW ONLY</code>) to verify quality while usable originals remain locked.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Anti-Ghosting Safeguard</div>
+      <div class="card-desc">Sellers claim automatic 100% payouts if the 48-hour review window expires without buyer dispute.</div>
+    </div>
+  </div>
+
+  <!-- Section 4 -->
+  <h2>4. How StudentPay Works (5-Step Core Flow)</h2>
+  <div class="diagram-box">
+1. CREATE DEAL ──────► 2. SELLER SUBMITS ──────► 3. BUYER INSPECTS ──────► 4. ACCEPT / DISPUTE ──────► 5. DELIVERABLE UNLOCKS
+(Buyer locks BOT)    (Commitment Hash)     (Protected Preview)     (Instant Payout/Refund)    (Original Asset Active)
+  </div>
+
+  <!-- Section 5 -->
+  <h2>5. Core Features</h2>
+  <ul>
+    <li><strong>Blinded Proof Commitment</strong>: Computes <code>keccak256</code> hashes of deliverables on-chain before deadlines.</li>
+    <li><strong>Dual-Level Protected Access</strong>: Generates watermarked previews for images, video, audio, code, and web apps while locking original files.</li>
+    <li><strong>48-Hour Review Window</strong>: Provides buyers 48 hours to inspect work or flag disputes before auto-release triggers.</li>
+    <li><strong>Anti-Ghosting Payout</strong>: Guarantees seller payment if buyers become unresponsive post-delivery.</li>
+    <li><strong>Deadline Refund Protection</strong>: Grants buyers immediate 100% refunds if sellers miss submission deadlines.</li>
+  </ul>
+
+  <!-- Section 6 -->
+  <h2>6. Technical Architecture</h2>
+  <div class="diagram-box">
+┌───────────────────────────────────────────────────────────────────┐
+│                     CLIENT BROWSER (Frontend)                     │
+│  React 18 · Vite · TypeScript · wagmi 2.x · viem · Reown AppKit   │
+│  deliverableStore (IndexedDB) · ProtectedPreviewModal             │
+└─────────────────────────────────┬─────────────────────────────────┘
+                                  │ JSON-RPC (Bohr Testnet)
+                                  ▼
+┌───────────────────────────────────────────────────────────────────┐
+│                   BLOCKCHAIN LAYER (Chain ID: 968)                │
+│  StudentPayEscrow.sol (0x7591428059DcAD6De8D51177080959F8B347603D)│
+└───────────────────────────────────────────────────────────────────┘
+  </div>
+
+  <!-- Section 7 -->
+  <h2>7. Technology Stack</h2>
+  <table class="table-custom">
+    <thead>
+      <tr><th>Layer</th><th>Technology Used</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Frontend Framework</td><td>React 18, Vite 6, TypeScript 5.6, react-router-dom 6</td></tr>
+      <tr><td>Web3 Provider</td><td>wagmi 2.13, viem 2.21, Reown AppKit 1.6 (WalletConnect v3)</td></tr>
+      <tr><td>Smart Contract</td><td>Solidity 0.8.24, Foundry / Forge Framework</td></tr>
+      <tr><td>Network</td><td>Bohr Testnet (Chain ID 968, BOT Native Token)</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Section 8 -->
+  <h2>8. Security & Trust Mechanisms</h2>
+  <ul>
+    <li><strong>Non-Custodial Escrow</strong>: Contract holds funds; no owner admin key or backdoor exists.</li>
+    <li><strong>Reentrancy Guards</strong>: State-locked execution for all payment transfers.</li>
+    <li><strong>Watermark Isolation</strong>: Prevents raw file copying or theft prior to payment release.</li>
+  </ul>
+
+  <!-- Section 9 -->
+  <h2>9. Product Status & Roadmap</h2>
+  <p><strong>Current Status</strong>: Active V2 Smart Contract deployed on Bohr Testnet; fully functional dApp with protected preview viewer; 21/21 passing unit tests.</p>
+  <p><strong>Future Roadmap</strong>: IPFS multi-file storage, ERC-20 stablecoin integration, partial milestone payments, and campus ambassador rollouts.</p>
+
+  <div class="footer">
+    StudentPay Escrow · Built with Foundry + React + Reown AppKit · Bohr Testnet
+  </div>
+</div>
+
+</body>
+</html>

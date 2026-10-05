@@ -43,6 +43,14 @@ export default function Layout() {
             >
               + New Deal
             </NavLink>
+            <NavLink
+              to="/whitepaper"
+              className={({ isActive }) =>
+                `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`
+              }
+            >
+              📄 Whitepaper & Deck
+            </NavLink>
           </nav>
         </div>
       </header>
@@ -65,6 +73,10 @@ export default function Layout() {
           >
             Bohr Testnet
           </a>
+          {' · '}
+          <NavLink to="/whitepaper" style={{ color: 'var(--colour-accent)' }}>
+            Whitepaper & Pitch Deck
+          </NavLink>
         </p>
       </footer>
     </div>

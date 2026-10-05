@@ -4,6 +4,7 @@ import Dashboard from '@/pages/Dashboard'
 import CreateDeal from '@/pages/CreateDeal'
 import MyDeals from '@/pages/MyDeals'
 import DealDetails from '@/pages/DealDetails'
+import Whitepaper from '@/pages/Whitepaper'
 
 export default function App() {
   return (
@@ -14,10 +15,11 @@ export default function App() {
           <Route path="create" element={<CreateDeal />} />
           <Route path="my-deals" element={<MyDeals />} />
           <Route path="deals/:dealId" element={<DealDetails />} />
+          <Route path="whitepaper" element={<Whitepaper />} />
+          <Route path="docs" element={<Whitepaper />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
     </BrowserRouter>
   )
 }
-

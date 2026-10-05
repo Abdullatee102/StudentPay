@@ -30,11 +30,19 @@ export default function Dashboard() {
               <Link to="/my-deals" className="btn btn-secondary">
                 My Deals
               </Link>
+              <Link to="/whitepaper" className="btn btn-secondary">
+                📄 View Whitepaper & Pitch Deck
+              </Link>
             </>
           ) : (
-            <p className={styles.connectPrompt}>
-              👆 Connect your wallet to get started
-            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+              <p className={styles.connectPrompt}>
+                👆 Connect your wallet to get started
+              </p>
+              <Link to="/whitepaper" className="btn btn-secondary">
+                📄 View Whitepaper & Pitch Deck
+              </Link>
+            </div>
           )}
         </div>
       </section>
