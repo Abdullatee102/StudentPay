@@ -134,6 +134,17 @@
       color: var(--text-muted);
     }
 
+    @media (max-width: 640px) {
+      body { padding: 1rem 0.5rem; }
+      .container { padding: 1.5rem 1rem; border-radius: 12px; }
+      .header-bar { flex-direction: column; align-items: stretch; gap: 1rem; }
+      .header-bar > div:last-child { flex-direction: column; width: 100%; }
+      .print-btn, .meta-tag { width: 100%; justify-content: center; text-align: center; }
+      .diagram-box { font-size: 0.72rem; padding: 1rem 0.75rem; }
+      .card-grid { grid-template-columns: 1fr; }
+      .table-custom th, .table-custom td { padding: 0.5rem 0.75rem; font-size: 0.82rem; }
+    }
+
     @media print {
       body { background: white; color: black; padding: 0; }
       .container { border: none; box-shadow: none; max-width: 100%; padding: 0; background: white; }

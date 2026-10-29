@@ -14,20 +14,20 @@ export default function Whitepaper() {
     <div className={styles.root}>
       {/* ── Header ─────────────────────────────────────────────────────────── */}
       <div className={styles.header}>
-        <div>
+        <div className={styles.headerText}>
           <h1 className={styles.title}>
             Student<span className={styles.accent}>Pay</span> Whitepaper & Pitch Deck
           </h1>
-          <p style={{ color: 'var(--colour-text-muted)', fontSize: '0.95rem', marginTop: '0.25rem' }}>
+          <p className={styles.subtitle}>
             Official V2 Product & Architectural Specification · BotChain Mainnet (Chain ID 677)
           </p>
         </div>
         <div className={styles.actionRow}>
           <span className={styles.navBadge}>Verified On-Chain V2</span>
-          <button className="btn btn-secondary" onClick={openStaticHtml}>
+          <button className={`btn btn-secondary ${styles.headerBtn}`} onClick={openStaticHtml}>
             👁️ Web / Print Version
           </button>
-          <button className="btn btn-primary" onClick={openPdf}>
+          <button className={`btn btn-primary ${styles.headerBtn}`} onClick={openPdf}>
             📥 Download PDF
           </button>
         </div>
@@ -36,22 +36,33 @@ export default function Whitepaper() {
       <div className={styles.layoutGrid}>
         {/* ── Sidebar TOC ─────────────────────────────────────────────────── */}
         <aside className={styles.tocSidebar}>
-          <div className={styles.tocTitle}>Table of Contents</div>
-          <a href="#sec-1" className={styles.tocLink}>1. The Problem</a>
-          <a href="#sec-2" className={styles.tocLink}>2. The Opportunity</a>
-          <a href="#sec-3" className={styles.tocLink}>3. The Solution</a>
-          <a href="#sec-4" className={styles.tocLink}>4. 5-Step Workflow</a>
-          <a href="#sec-5" className={styles.tocLink}>5. Implemented Features</a>
-          <a href="#sec-6" className={styles.tocLink}>6. User Journey</a>
-          <a href="#sec-7" className={styles.tocLink}>7. Technical Architecture</a>
-          <a href="#sec-8" className={styles.tocLink}>8. Technology Stack</a>
-          <a href="#sec-9" className={styles.tocLink}>9. Blockchain Layer</a>
-          <a href="#sec-10" className={styles.tocLink}>10. Security & Trust</a>
-          <a href="#sec-11" className={styles.tocLink}>11. Value Proposition</a>
-          <a href="#sec-12" className={styles.tocLink}>12. Competitive Advantage</a>
-          <a href="#sec-13" className={styles.tocLink}>13. Product Status</a>
-          <a href="#sec-14" className={styles.tocLink}>14. Roadmap</a>
-          <a href="#sec-15" className={styles.tocLink}>15. Conclusion</a>
+          <details className={styles.tocDetails} open>
+            <summary className={styles.tocSummary}>
+              <span className={styles.tocSummaryText}>
+                <span className={styles.tocSummaryIcon}>📑</span>
+                <span>Table of Contents</span>
+                <span className={styles.tocCountBadge}>15 Sections</span>
+              </span>
+              <span className={styles.tocChevron} aria-hidden="true">▾</span>
+            </summary>
+            <nav className={styles.tocNav}>
+              <a href="#sec-1" className={styles.tocLink}>1. The Problem</a>
+              <a href="#sec-2" className={styles.tocLink}>2. The Opportunity</a>
+              <a href="#sec-3" className={styles.tocLink}>3. The Solution</a>
+              <a href="#sec-4" className={styles.tocLink}>4. 5-Step Workflow</a>
+              <a href="#sec-5" className={styles.tocLink}>5. Implemented Features</a>
+              <a href="#sec-6" className={styles.tocLink}>6. User Journey</a>
+              <a href="#sec-7" className={styles.tocLink}>7. Technical Architecture</a>
+              <a href="#sec-8" className={styles.tocLink}>8. Technology Stack</a>
+              <a href="#sec-9" className={styles.tocLink}>9. Blockchain Layer</a>
+              <a href="#sec-10" className={styles.tocLink}>10. Security & Trust</a>
+              <a href="#sec-11" className={styles.tocLink}>11. Value Proposition</a>
+              <a href="#sec-12" className={styles.tocLink}>12. Competitive Advantage</a>
+              <a href="#sec-13" className={styles.tocLink}>13. Product Status</a>
+              <a href="#sec-14" className={styles.tocLink}>14. Roadmap</a>
+              <a href="#sec-15" className={styles.tocLink}>15. Conclusion</a>
+            </nav>
+          </details>
         </aside>
 
         {/* ── Main Document Body ─────────────────────────────────────────── */}
@@ -190,17 +201,19 @@ export default function Whitepaper() {
               <span>💻</span> 8. Technology Stack
             </h2>
             <div className={styles.sectionBody}>
-              <table className={styles.table}>
-                <thead>
-                  <tr><th>Layer</th><th>Technology Used</th></tr>
-                </thead>
-                <tbody>
-                  <tr><td>Frontend Framework</td><td>React 18, Vite 6, TypeScript 5.6, react-router-dom 6</td></tr>
-                  <tr><td>Web3 Provider</td><td>wagmi 2.13, viem 2.21, Reown AppKit 1.6 (WalletConnect v3)</td></tr>
-                  <tr><td>Smart Contract</td><td>Solidity 0.8.24, Foundry / Forge Framework</td></tr>
-                  <tr><td>Network</td><td>BotChain Mainnet (Chain ID 677, BOT Native Token)</td></tr>
-                </tbody>
-              </table>
+              <div className={styles.tableWrapper}>
+                <table className={styles.table}>
+                  <thead>
+                    <tr><th>Layer</th><th>Technology Used</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Frontend Framework</td><td>React 18, Vite 6, TypeScript 5.6, react-router-dom 6</td></tr>
+                    <tr><td>Web3 Provider</td><td>wagmi 2.13, viem 2.21, Reown AppKit 1.6 (WalletConnect v3)</td></tr>
+                    <tr><td>Smart Contract</td><td>Solidity 0.8.24, Foundry / Forge Framework</td></tr>
+                    <tr><td>Network</td><td>BotChain Mainnet (Chain ID 677, BOT Native Token)</td></tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </section>
 
@@ -286,11 +299,11 @@ export default function Whitepaper() {
               <p>
                 StudentPay proves that peer-to-peer student service exchanges can be secure, trustless, and zero-fee. By combining smart contract escrows with protected preview verification, StudentPay solves the fundamental dilemma of digital service delivery: <strong>preventing work-stealing while ensuring buyer satisfaction.</strong>
               </p>
-              <div style={{ marginTop: '1rem', display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                <a href="https://scan.botchain.ai/address/0x59540a9B86c2bFB4F2591c840A6377484200d680" target="_blank" rel="noopener noreferrer" className="btn btn-secondary">
+              <div className={styles.conclusionActions}>
+                <a href="https://scan.botchain.ai/address/0x59540a9B86c2bFB4F2591c840A6377484200d680" target="_blank" rel="noopener noreferrer" className={`btn btn-secondary ${styles.conclusionBtn}`}>
                   🔍 View Contract on BotChain Explorer
                 </a>
-                <button className="btn btn-primary" onClick={openPdf}>
+                <button className={`btn btn-primary ${styles.conclusionBtn}`} onClick={openPdf}>
                   📥 Download PDF
                 </button>
               </div>
