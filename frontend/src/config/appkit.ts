@@ -15,7 +15,7 @@ createAppKit({
   metadata: {
     name: 'StudentPay Escrow',
     description: 'Peer-to-peer crypto escrow for students — powered by BotChain',
-    url: typeof window !== 'undefined' ? window.location.origin : '',
+    url: typeof window !== 'undefined' ? window.location.origin : (import.meta.env.VITE_APP_URL ?? 'https://student-pay-drik.vercel.app'),
     icons: ['/logo.svg'],
   },
   features: {

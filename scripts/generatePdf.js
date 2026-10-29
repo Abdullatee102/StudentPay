@@ -32,7 +32,7 @@ doc.fillColor(primaryColor).fontSize(22).font('Helvetica-Bold').text('StudentPay
 doc.fontSize(12).font('Helvetica').fillColor(mutedColor).text('Trustless Peer-to-Peer Student Micro-Services Escrow on BotChain Mainnet', { align: 'left' });
 doc.moveDown(0.5);
 
-doc.fontSize(9).fillColor('#475569').text('Contract Address: 0x59540a9B86c2bFB4F2591c840A6377484200d680 | Chain ID: 677 | Token: BOT');
+doc.fontSize(9).fillColor('#475569').text('Live DApp: https://student-pay-drik.vercel.app | Contract: 0x59540a9B86c2bFB4F2591c840A6377484200d680 | Chain ID: 677');
 doc.moveDown(1);
 doc.strokeColor('#E2E8F0').lineWidth(1).moveTo(40, doc.y).lineTo(555, doc.y).stroke();
 doc.moveDown(1);

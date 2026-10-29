@@ -273,7 +273,7 @@ export default function Whitepaper() {
             <div className={styles.sectionBody}>
               <p><strong>Smart Contract:</strong> Fully deployed & verified V2 contract on BotChain Mainnet at <span className={styles.codeBadge}>0x59540a9B86c2bFB4F2591c840A6377484200d680</span>.</p>
               <p><strong>Test Suite:</strong> 21 passing unit & integration tests (<span className={styles.codeBadge}>forge test</span>).</p>
-              <p><strong>Frontend DApp:</strong> Fully built, production-compiled, and deployed on Vercel at <span className={styles.codeBadge}>https://student-pay-rcpc.vercel.app</span>.</p>
+              <p><strong>Frontend DApp:</strong> Fully built, production-compiled, and deployed on Vercel at <span className={styles.codeBadge}>https://student-pay-drik.vercel.app</span>.</p>
             </div>
           </section>
 
