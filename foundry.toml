@@ -13,9 +13,12 @@ remappings = [
 fs_permissions = [{ access = "read-write", path = "./" }]
 
 [rpc_endpoints]
+botchain = "https://rpc.botchain.ai"
 bohr_testnet = "${BOHR_RPC_URL}"
 
 [etherscan]
+# BotChain Mainnet explorer (Blockscout-compatible)
+botchain = { key = "verifycontract", url = "https://scan.botchain.ai/api" }
 # Bohr Testnet explorer (blockscout-compatible)
 bohr_testnet = { key = "verifycontract", url = "https://scan.bohr.life/api" }
 

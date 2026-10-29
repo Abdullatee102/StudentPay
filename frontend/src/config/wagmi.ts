@@ -3,7 +3,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 import { createConfig, http } from 'wagmi'
 import { WagmiAdapter } from '@reown/appkit-adapter-wagmi'
-import { bohrTestnet, SUPPORTED_CHAINS } from './chains'
+import { botchain, SUPPORTED_CHAINS } from './chains'
 
 // ── Reown AppKit project ID ───────────────────────────────────────────────────
 // Get your project ID at: https://cloud.reown.com
@@ -30,10 +30,10 @@ export const wagmiConfig = wagmiAdapter.wagmiConfig
 
 // ── Standalone wagmi config (for use outside AppKit context if needed) ─────────
 export const standaloneWagmiConfig = createConfig({
-  chains: [bohrTestnet],
+  chains: [botchain],
   transports: {
-    [bohrTestnet.id]: http(
-      import.meta.env.VITE_BOHR_RPC_URL ?? 'https://rpc.bohr.life'
+    [botchain.id]: http(
+      import.meta.env.VITE_BOTCHAIN_RPC_URL ?? 'https://rpc.botchain.ai'
     ),
   },
 })

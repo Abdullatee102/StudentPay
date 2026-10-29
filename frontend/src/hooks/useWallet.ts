@@ -2,7 +2,7 @@
 // useWallet — thin wrapper over wagmi's useAccount / useBalance
 // ─────────────────────────────────────────────────────────────────────────────
 import { useAccount, useBalance, useChainId, useSwitchChain } from 'wagmi'
-import { bohrTestnet } from '@/config/chains'
+import { botchain } from '@/config/chains'
 
 export function useWallet() {
   const { address, isConnected, isConnecting, isDisconnected } = useAccount()
@@ -14,10 +14,10 @@ export function useWallet() {
     query: { enabled: !!address },
   })
 
-  const isOnBohr = chainId === bohrTestnet.id
+  const isOnBotChain = chainId === botchain.id
 
-  const switchToBohr = () => {
-    if (!isOnBohr) switchChain({ chainId: bohrTestnet.id })
+  const switchToBotChain = () => {
+    if (!isOnBotChain) switchChain({ chainId: botchain.id })
   }
 
   return {
@@ -26,8 +26,11 @@ export function useWallet() {
     isConnecting,
     isDisconnected,
     chainId,
-    isOnBohr,
-    switchToBohr,
+    isOnBotChain,
+    switchToBotChain,
+    // Backwards-compatibility aliases
+    isOnBohr: isOnBotChain,
+    switchToBohr: switchToBotChain,
     balance,
   }
 }

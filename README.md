@@ -3,7 +3,7 @@
 > Peer-to-peer crypto escrow for students — trustless, transparent, on-chain.
 
 **🌐 Live Production Application**: [https://student-pay-rcpc.vercel.app](https://student-pay-rcpc.vercel.app)
-**🛡️ Active V2 Smart Contract**: [`0x7591428059DcAD6De8D51177080959F8B347603D`](https://scan.bohr.life/address/0x7591428059DcAD6De8D51177080959F8B347603D)
+**🛡️ Active V2 Smart Contract (Verified)**: [`0x59540a9B86c2bFB4F2591c840A6377484200d680`](https://scan.botchain.ai/address/0x59540a9B86c2bFB4F2591c840A6377484200d680)
 
 ---
 
@@ -40,14 +40,17 @@ StudentPay uses **no backend database**, **no centralised authentication**, and 
                      │  JSON-RPC calls (read/write)
                      ▼
 ┌─────────────────────────────────────────────────────┐
-│              Bohr Testnet (Chain ID: 968)            │
+│              BotChain Mainnet (Chain ID: 677)       │
 │                                                     │
 │  StudentPayEscrow.sol                               │
 │  · createDeal                                       │
 │  · fundDeal (payable)                               │
-│  · markWorkCompleted                                │
+│  · submitProof                                      │
 │  · releaseFunds                                     │
+│  · revealProof                                      │
+│  · claimAutoRelease                                 │
 │  · claimRefund                                      │
+│  · openDispute                                      │
 │  · cancelDeal                                       │
 └─────────────────────────────────────────────────────┘
 ```
@@ -63,15 +66,16 @@ StudentPay uses **no backend database**, **no centralised authentication**, and 
 
 ---
 
-## Network — Bohr Testnet
+## Network — BotChain Mainnet
 
-| Parameter    | Value                  |
-| ------------ | ---------------------- |
-| Network      | Bohr Testnet           |
-| Chain ID     | 968                    |
-| RPC URL      | https://rpc.bohr.life  |
-| Native Token | BOT                    |
-| Explorer     | https://scan.bohr.life |
+| Parameter    | Value                      |
+| ------------ | -------------------------- |
+| Network      | BotChain Mainnet           |
+| Chain ID     | 677                        |
+| RPC URL      | https://rpc.botchain.ai    |
+| Native Token | BOT                        |
+| Total Supply | 150 Million                |
+| Explorer     | https://scan.botchain.ai   |
 
 Network configuration lives in a **single file**: [`frontend/src/config/chains.ts`](frontend/src/config/chains.ts). Switching to mainnet or another EVM chain requires editing only that file.
 
@@ -174,16 +178,16 @@ RELEASED                                        REFUNDED
 
 ```env
 VITE_REOWN_PROJECT_ID=      # From https://cloud.reown.com
-VITE_BOHR_RPC_URL=https://rpc.bohr.life
-VITE_BOHR_CHAIN_ID=968
-VITE_ESCROW_CONTRACT_ADDRESS=  # After deployment
+VITE_BOTCHAIN_RPC_URL=https://rpc.botchain.ai
+VITE_BOTCHAIN_CHAIN_ID=677
+VITE_ESCROW_CONTRACT_ADDRESS=0x59540a9B86c2bFB4F2591c840A6377484200d680
 ```
 
 ### Deployment (`.env` — root level)
 
 ```env
 PRIVATE_KEY=               # Deployer wallet private key
-BOHR_RPC_URL=https://rpc.bohr.life
+BOTCHAIN_RPC_URL=https://rpc.botchain.ai
 ```
 
 > ⚠️ **Security**: `PRIVATE_KEY` must NEVER be in any `VITE_*` variable.
@@ -208,13 +212,18 @@ forge test -vv
 # Run tests with gas report
 forge test --gas-report
 
-# Deploy to Bohr Testnet (dry run — no broadcast)
-forge script script/DeployStudentPayEscrow.s.sol --rpc-url bohr_testnet
+# Deploy to BotChain Mainnet (dry run — no broadcast)
+forge script script/DeployStudentPayEscrow.s.sol --rpc-url botchain
 
-# Deploy for real (requires PRIVATE_KEY in .env)
+# Deploy for real and verify (requires PRIVATE_KEY in .env)
 forge script script/DeployStudentPayEscrow.s.sol \
-  --rpc-url bohr_testnet \
+  --rpc-url botchain \
   --broadcast
+
+# Verify contract on BotChain Explorer
+forge verify-contract 0x59540a9B86c2bFB4F2591c840A6377484200d680 src/StudentPayEscrow.sol:StudentPayEscrow \
+  --verifier blockscout \
+  --verifier-url https://scan.botchain.ai/api
 ```
 
 ### Frontend
@@ -279,4 +288,4 @@ MetaMask will work through the standard wallet injected provider flow. No specia
 
 ---
 
-_Built with Foundry + React + Reown AppKit · Bohr Testnet_
+_Built with Foundry + React + Reown AppKit · BotChain Mainnet_

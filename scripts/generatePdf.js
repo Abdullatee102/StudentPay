@@ -29,10 +29,10 @@ const mutedColor = '#64748B';
 
 // Header
 doc.fillColor(primaryColor).fontSize(22).font('Helvetica-Bold').text('StudentPay Escrow', { align: 'left' });
-doc.fontSize(12).font('Helvetica').fillColor(mutedColor).text('Trustless Peer-to-Peer Student Micro-Services Escrow on Bohr Testnet', { align: 'left' });
+doc.fontSize(12).font('Helvetica').fillColor(mutedColor).text('Trustless Peer-to-Peer Student Micro-Services Escrow on BotChain Mainnet', { align: 'left' });
 doc.moveDown(0.5);
 
-doc.fontSize(9).fillColor('#475569').text('Contract Address: 0x7591428059DcAD6De8D51177080959F8B347603D | Chain ID: 968 | Token: BOT');
+doc.fontSize(9).fillColor('#475569').text('Contract Address: 0x59540a9B86c2bFB4F2591c840A6377484200d680 | Chain ID: 677 | Token: BOT');
 doc.moveDown(1);
 doc.strokeColor('#E2E8F0').lineWidth(1).moveTo(40, doc.y).lineTo(555, doc.y).stroke();
 doc.moveDown(1);
@@ -54,7 +54,7 @@ addSection('2. The Opportunity',
 );
 
 addSection('3. The StudentPay Solution',
-  'StudentPay eliminates counterparty risk using EVM smart contracts on the Bohr Testnet:\n' +
+  'StudentPay eliminates counterparty risk using EVM smart contracts on BotChain Mainnet:\n' +
   '• Zero Centralized Backend: The smart contract handles 100% of business logic and state.\n' +
   '• Blinded Proof Commitments: Sellers submit keccak256 hashes before deadlines to prevent work-stealing.\n' +
   '• Protected Preview Inspection: Buyers inspect watermarked previews (STUDENTPAY • PREVIEW ONLY) while usable originals remain locked.\n' +
@@ -79,17 +79,17 @@ addSection('5. Core Implemented Features',
 
 addSection('6. Technical Architecture & Technology Stack',
   'Frontend: React 18, Vite 6, TypeScript 5.6, wagmi 2.x, viem 2.x, Reown AppKit, TanStack Query.\n' +
-  'Blockchain: Bohr Testnet (Chain ID 968, BOT Native Token), StudentPayEscrow.sol (Solidity 0.8.24).\n' +
+  'Blockchain: BotChain Mainnet (Chain ID 677, BOT Native Token), StudentPayEscrow.sol (Solidity 0.8.24).\n' +
   'Testing & Security: 21 passing Foundry/Forge unit & integration tests. Non-custodial, reentrancy-guarded smart contract architecture.'
 );
 
 addSection('7. Product Status & Roadmap',
-  'Current Status: Deployed V2 Smart Contract (0x7591428059DcAD6De8D51177080959F8B347603D), complete dApp, 21 passing tests.\n' +
-  'Future Roadmap: IPFS decentralized storage integration, multi-token ERC-20 support, partial milestone releases, and mainnet deployment.'
+  'Current Status: Deployed & Verified V2 Smart Contract (0x59540a9B86c2bFB4F2591c840A6377484200d680) on BotChain Mainnet, complete dApp, 21 passing tests.\n' +
+  'Future Roadmap: IPFS decentralized storage integration, multi-token ERC-20 support, partial milestone releases, and cross-chain expansions.'
 );
 
 // Footer
-doc.fontSize(8).fillColor(mutedColor).text('StudentPay Escrow · Built with Foundry + React + Reown AppKit · Bohr Testnet', 40, 780, { align: 'center' });
+doc.fontSize(8).fillColor(mutedColor).text('StudentPay Escrow · Built with Foundry + React + Reown AppKit · BotChain Mainnet', 40, 780, { align: 'center' });
 
 doc.end();
 

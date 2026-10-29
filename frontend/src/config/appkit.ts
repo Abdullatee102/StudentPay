@@ -14,7 +14,7 @@ createAppKit({
   projectId: REOWN_PROJECT_ID,
   metadata: {
     name: 'StudentPay Escrow',
-    description: 'Peer-to-peer crypto escrow for students — powered by Bohr Testnet',
+    description: 'Peer-to-peer crypto escrow for students — powered by BotChain',
     url: typeof window !== 'undefined' ? window.location.origin : '',
     icons: ['/logo.svg'],
   },

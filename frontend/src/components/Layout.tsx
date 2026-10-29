@@ -67,11 +67,11 @@ export default function Layout() {
         <p>
           StudentPay Escrow · Powered by{' '}
           <a
-            href="https://scan.bohr.life"
+            href="https://scan.botchain.ai"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Bohr Testnet
+            BotChain Mainnet
           </a>
           {' · '}
           <NavLink to="/whitepaper" style={{ color: 'var(--colour-accent)' }}>

@@ -19,7 +19,7 @@ export default function Whitepaper() {
             Student<span className={styles.accent}>Pay</span> Whitepaper & Pitch Deck
           </h1>
           <p style={{ color: 'var(--colour-text-muted)', fontSize: '0.95rem', marginTop: '0.25rem' }}>
-            Official V2 Product & Architectural Specification · Bohr Testnet (Chain ID 968)
+            Official V2 Product & Architectural Specification · BotChain Mainnet (Chain ID 677)
           </p>
         </div>
         <div className={styles.actionRow}>
@@ -84,7 +84,7 @@ export default function Whitepaper() {
                 Higher education campuses host vibrant micro-economies. A decentralized, zero-commission escrow platform enables students to monetize skills safely without trusting unknown peers.
               </p>
               <p>
-                By leveraging smart contracts on an EVM-compatible blockchain (Bohr Testnet), StudentPay transforms peer agreements into self-executing, mathematically guaranteed escrows requiring zero custodial trust.
+                By leveraging smart contracts on an EVM-compatible blockchain (BotChain Mainnet), StudentPay transforms peer agreements into self-executing, mathematically guaranteed escrows requiring zero custodial trust.
               </p>
             </div>
           </section>
@@ -101,7 +101,7 @@ export default function Whitepaper() {
               <div className={styles.cardGrid}>
                 <div className={styles.featureCard}>
                   <div className={styles.featureCardTitle}>Zero Centralized Backend</div>
-                  <div className={styles.featureCardDesc}>No Express server, PostgreSQL, or Supabase. The smart contract on Bohr Testnet handles all business logic and state.</div>
+                  <div className={styles.featureCardDesc}>No Express server, PostgreSQL, or Supabase. The smart contract on BotChain Mainnet handles all business logic and state.</div>
                 </div>
                 <div className={styles.featureCard}>
                   <div className={styles.featureCardTitle}>Blinded Proof Commitments</div>
@@ -174,11 +174,11 @@ export default function Whitepaper() {
 │  React 18 · Vite · TypeScript · wagmi 2.x · viem · Reown AppKit   │
 │  deliverableStore (IndexedDB) · ProtectedPreviewModal             │
 └─────────────────────────────────┬─────────────────────────────────┘
-                                  │ JSON-RPC (Bohr Testnet)
+                                  │ JSON-RPC (BotChain Mainnet)
                                   ▼
 ┌───────────────────────────────────────────────────────────────────┐
-│                   BLOCKCHAIN LAYER (Chain ID: 968)                │
-│  StudentPayEscrow.sol (0x7591428059DcAD6De8D51177080959F8B347603D)│
+│                 BLOCKCHAIN LAYER (Chain ID: 677)                  │
+│  StudentPayEscrow.sol (0x59540a9B86c2bFB4F2591c840A6377484200d680)│
 └───────────────────────────────────────────────────────────────────┘
               </div>
             </div>
@@ -198,7 +198,7 @@ export default function Whitepaper() {
                   <tr><td>Frontend Framework</td><td>React 18, Vite 6, TypeScript 5.6, react-router-dom 6</td></tr>
                   <tr><td>Web3 Provider</td><td>wagmi 2.13, viem 2.21, Reown AppKit 1.6 (WalletConnect v3)</td></tr>
                   <tr><td>Smart Contract</td><td>Solidity 0.8.24, Foundry / Forge Framework</td></tr>
-                  <tr><td>Network</td><td>Bohr Testnet (Chain ID 968, BOT Native Token)</td></tr>
+                  <tr><td>Network</td><td>BotChain Mainnet (Chain ID 677, BOT Native Token)</td></tr>
                 </tbody>
               </table>
             </div>
@@ -258,7 +258,7 @@ export default function Whitepaper() {
               <span>📊</span> 13. Current Product Status
             </h2>
             <div className={styles.sectionBody}>
-              <p><strong>Smart Contract:</strong> Fully deployed V2 contract on Bohr Testnet at <span className={styles.codeBadge}>0x7591428059DcAD6De8D51177080959F8B347603D</span>.</p>
+              <p><strong>Smart Contract:</strong> Fully deployed & verified V2 contract on BotChain Mainnet at <span className={styles.codeBadge}>0x59540a9B86c2bFB4F2591c840A6377484200d680</span>.</p>
               <p><strong>Test Suite:</strong> 21 passing unit & integration tests (<span className={styles.codeBadge}>forge test</span>).</p>
               <p><strong>Frontend DApp:</strong> Fully built, production-compiled, and deployed on Vercel at <span className={styles.codeBadge}>https://student-pay-rcpc.vercel.app</span>.</p>
             </div>
@@ -270,7 +270,7 @@ export default function Whitepaper() {
               <span>🗺️</span> 14. Product Roadmap
             </h2>
             <div className={styles.sectionBody}>
-              <p><strong>Phase 1 (Completed):</strong> Core V2 escrow, blinded proof commitments, 48h review window, auto-release, and protected preview system on Bohr Testnet.</p>
+              <p><strong>Phase 1 (Completed):</strong> Core V2 escrow, blinded proof commitments, 48h review window, auto-release, and protected preview system on BotChain Mainnet.</p>
               <p><strong>Phase 2 (Planned):</strong> Decentralized IPFS deliverable storage integration with client-side encryption.</p>
               <p><strong>Phase 3 (Planned):</strong> Multi-token ERC-20 stablecoin support (USDT/USDC).</p>
               <p><strong>Phase 4 (Planned):</strong> On-chain student reputation & verifiable completion badges.</p>
@@ -287,8 +287,8 @@ export default function Whitepaper() {
                 StudentPay proves that peer-to-peer student service exchanges can be secure, trustless, and zero-fee. By combining smart contract escrows with protected preview verification, StudentPay solves the fundamental dilemma of digital service delivery: <strong>preventing work-stealing while ensuring buyer satisfaction.</strong>
               </p>
               <div style={{ marginTop: '1rem', display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                <a href="https://scan.bohr.life/address/0x7591428059DcAD6De8D51177080959F8B347603D" target="_blank" rel="noopener noreferrer" className="btn btn-secondary">
-                  🔍 View Contract on Bohr Explorer
+                <a href="https://scan.botchain.ai/address/0x59540a9B86c2bFB4F2591c840A6377484200d680" target="_blank" rel="noopener noreferrer" className="btn btn-secondary">
+                  🔍 View Contract on BotChain Explorer
                 </a>
                 <button className="btn btn-primary" onClick={openPdf}>
                   📥 Download PDF

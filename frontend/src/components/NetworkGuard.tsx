@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// NetworkGuard — prompts the user to switch to Bohr Testnet if on wrong chain
+// NetworkGuard — prompts the user to switch to BotChain Mainnet if on wrong chain
 // ─────────────────────────────────────────────────────────────────────────────
 import type { ReactNode } from 'react'
 import { useWallet } from '@/hooks/useWallet'
@@ -10,24 +10,24 @@ interface Props {
 }
 
 export default function NetworkGuard({ children }: Props) {
-  const { isConnected, isOnBohr, switchToBohr } = useWallet()
+  const { isConnected, isOnBotChain, switchToBotChain } = useWallet()
 
   // If wallet isn't connected, let the page handle it
   if (!isConnected) return <>{children}</>
 
-  if (!isOnBohr) {
+  if (!isOnBotChain) {
     return (
       <div className={styles.wrapper}>
         <div className={styles.card}>
           <div className={styles.icon}>⚠️</div>
           <h2 className={styles.title}>Wrong Network</h2>
           <p className={styles.desc}>
-            StudentPay runs on <strong>Bohr Testnet</strong> (Chain ID: 968).
+            StudentPay runs on <strong>BotChain Mainnet</strong> (Chain ID: 677).
             <br />
             Please switch your wallet to continue.
           </p>
-          <button className="btn btn-primary" onClick={switchToBohr}>
-            Switch to Bohr Testnet
+          <button className="btn btn-primary" onClick={switchToBotChain}>
+            Switch to BotChain Mainnet
           </button>
         </div>
       </div>

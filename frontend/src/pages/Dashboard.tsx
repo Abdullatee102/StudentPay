@@ -59,8 +59,8 @@ export default function Dashboard() {
         </div>
         <div className="card">
           <p className={styles.statLabel}>Network</p>
-          <p className={styles.statValue}>Bohr Testnet</p>
-          <p className={styles.statSub}>Chain ID: 968 · Token: BOT</p>
+          <p className={styles.statValue}>BotChain Mainnet</p>
+          <p className={styles.statSub}>Chain ID: 677 · Token: BOT</p>
         </div>
         <div className="card">
           <p className={styles.statLabel}>Escrow Protection</p>

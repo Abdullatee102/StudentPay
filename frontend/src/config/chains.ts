@@ -1,47 +1,50 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// Blockchain / Network Configuration
+// Blockchain / Network Configuration — BotChain Mainnet
 // ─────────────────────────────────────────────────────────────────────────────
-// All network settings live here. To switch networks, update this file only.
+// All network settings live here.
 // ─────────────────────────────────────────────────────────────────────────────
-
 import { defineChain } from 'viem'
 
-// ── Bohr Testnet ──────────────────────────────────────────────────────────────
-export const bohrTestnet = defineChain({
-  id: Number(import.meta.env.VITE_BOHR_CHAIN_ID ?? 968),
-  name: 'Bohr Testnet',
+// ── BotChain Mainnet ──────────────────────────────────────────────────────────
+export const botchain = defineChain({
+  id: Number(import.meta.env.VITE_BOTCHAIN_CHAIN_ID ?? 677),
+  name: 'BotChain',
   nativeCurrency: {
     decimals: 18,
-    name: 'Bohr Testnet Token',
+    name: 'BOT',
     symbol: 'BOT',
   },
   rpcUrls: {
     default: {
-      http: [import.meta.env.VITE_BOHR_RPC_URL ?? 'https://rpc.bohr.life'],
+      http: [import.meta.env.VITE_BOTCHAIN_RPC_URL ?? 'https://rpc.botchain.ai'],
     },
   },
   blockExplorers: {
     default: {
-      name: 'Bohr Explorer',
-      url: 'https://scan.bohr.life',
+      name: 'BotChain Explorer',
+      url: 'https://scan.botchain.ai',
     },
   },
-  testnet: true,
+  testnet: false,
 })
 
-// ── Supported chains (add mainnet here when going to production) ───────────────
-export const SUPPORTED_CHAINS: [typeof bohrTestnet, ...(typeof bohrTestnet)[]] = [bohrTestnet]
+// Legacy export for backwards compatibility
+export const bohrTestnet = botchain
+
+// ── Supported chains ──────────────────────────────────────────────────────────
+export const SUPPORTED_CHAINS: [typeof botchain, ...(typeof botchain)[]] = [botchain]
 
 // ── Contract addresses ────────────────────────────────────────────────────────
-// Populated after deployment. Use VITE_ESCROW_CONTRACT_ADDRESS in .env.local
+// Deployed & Verified on BotChain Mainnet
 export const CONTRACT_ADDRESSES = {
-  escrow: (import.meta.env.VITE_ESCROW_CONTRACT_ADDRESS ?? '') as `0x${string}`,
+  escrow: (import.meta.env.VITE_ESCROW_CONTRACT_ADDRESS ??
+    '0x59540a9B86c2bFB4F2591c840A6377484200d680') as `0x${string}`,
 } as const
 
 // ── Network metadata ──────────────────────────────────────────────────────────
 export const NETWORK_CONFIG = {
-  defaultChainId: bohrTestnet.id,
-  explorerUrl: 'https://scan.bohr.life',
+  defaultChainId: botchain.id,
+  explorerUrl: 'https://scan.botchain.ai',
   explorerTxPath: '/tx/',
   explorerAddressPath: '/address/',
 } as const
