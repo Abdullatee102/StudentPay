@@ -300,6 +300,9 @@ export default function Whitepaper() {
                 StudentPay proves that peer-to-peer student service exchanges can be secure, trustless, and zero-fee. By combining smart contract escrows with protected preview verification, StudentPay solves the fundamental dilemma of digital service delivery: <strong>preventing work-stealing while ensuring buyer satisfaction.</strong>
               </p>
               <div className={styles.conclusionActions}>
+                <a href="https://botchain.ai" target="_blank" rel="noopener noreferrer" className={`btn btn-secondary ${styles.conclusionBtn}`}>
+                  🌐 BOT Chain Website
+                </a>
                 <a href="https://scan.botchain.ai/address/0x59540a9B86c2bFB4F2591c840A6377484200d680" target="_blank" rel="noopener noreferrer" className={`btn btn-secondary ${styles.conclusionBtn}`}>
                   🔍 View Contract on BotChain Explorer
                 </a>

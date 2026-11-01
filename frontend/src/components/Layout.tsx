@@ -64,20 +64,47 @@ export default function Layout() {
 
       {/* ── Footer ─────────────────────────────────────────────────────────── */}
       <footer className={styles.footer}>
-        <p>
-          StudentPay Escrow · Powered by{' '}
-          <a
-            href="https://scan.botchain.ai"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            BotChain Mainnet
-          </a>
-          {' · '}
-          <NavLink to="/whitepaper" style={{ color: 'var(--colour-accent)' }}>
-            Whitepaper & Pitch Deck
-          </NavLink>
-        </p>
+        <div className={styles.footerInner}>
+          <div className={styles.footerBrand}>
+            <span>StudentPay Escrow · Peer-to-peer crypto escrow</span>
+            <span className={styles.footerDot}>·</span>
+            <NavLink to="/whitepaper" className={styles.footerLink}>
+              Whitepaper & Pitch Deck
+            </NavLink>
+          </div>
+
+          <div className={styles.footerEcosystem}>
+            <span className={styles.ecosystemLabel}>Ecosystem:</span>
+            <div className={styles.botChainBadge}>
+              <img
+                src="/botchain-logo.png"
+                alt="BOT Chain Logo"
+                className={styles.botChainLogo}
+                width={18}
+                height={18}
+              />
+              <span className={styles.botChainName}>BOT Chain</span>
+            </div>
+            <span className={styles.footerDot}>·</span>
+            <a
+              href="https://botchain.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.footerLink}
+            >
+              BOT Chain Website
+            </a>
+            <span className={styles.footerDot}>·</span>
+            <a
+              href="https://scan.botchain.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.footerLink}
+            >
+              BOT Chain Explorer
+            </a>
+          </div>
+        </div>
       </footer>
     </div>
   )

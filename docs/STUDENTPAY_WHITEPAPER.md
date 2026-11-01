@@ -3,7 +3,8 @@
 **Version**: 2.0  
 **Network**: BotChain Mainnet (Chain ID: 677)  
 **Contract Address**: `0x59540a9B86c2bFB4F2591c840A6377484200d680`  
-**Explorer**: [https://scan.botchain.ai](https://scan.botchain.ai)  
+**BOT Chain Website**: [https://botchain.ai](https://botchain.ai)  
+**BOT Chain Explorer**: [https://scan.botchain.ai](https://scan.botchain.ai)  
 **Live DApp**: [https://student-pay-drik.vercel.app](https://student-pay-drik.vercel.app)  
 
 ---
@@ -221,4 +222,5 @@ Blockchain guarantees that escrow funds cannot be seized, altered, or misappropr
 StudentPay proves that peer-to-peer student service exchanges can be secure, trustless, and zero-fee. By combining smart contract escrows with protected preview verification, StudentPay solves the fundamental dilemma of digital service delivery: **preventing work-stealing while ensuring buyer satisfaction.**
 
 - **Explore DApp**: [https://student-pay-drik.vercel.app](https://student-pay-drik.vercel.app)
+- **BOT Chain Website**: [https://botchain.ai](https://botchain.ai)
 - **View Contract on BotChain Explorer**: [0x59540a9B...d680](https://scan.botchain.ai/address/0x59540a9B86c2bFB4F2591c840A6377484200d680)

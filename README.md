@@ -4,6 +4,7 @@
 
 **🌐 Live Production Application**: [https://student-pay-drik.vercel.app](https://student-pay-drik.vercel.app)
 **🛡️ Active V2 Smart Contract (Verified)**: [`0x59540a9B86c2bFB4F2591c840A6377484200d680`](https://scan.botchain.ai/address/0x59540a9B86c2bFB4F2591c840A6377484200d680)
+**🤖 BOT Chain Ecosystem**: [Website](https://botchain.ai) · [Explorer](https://scan.botchain.ai)
 
 ---
 
